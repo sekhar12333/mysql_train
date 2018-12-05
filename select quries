@@ -1,0 +1,660 @@
+mysql> 
+mysql> 
+mysql> create database cars;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> 
+mysql> 
+mysql> use cars;
+Database changed
+mysql> 
+mysql> 
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table cars(name varchar(40), color varchar(15), make varchar(30), model varchar(30), price int(10),mfd date, owned date, owner varchar(mysql> create table cars(name varchar(40), color varchar(15),int(10),mfd date, owned date, owner varchar(30), hp int(4), milage int(3));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> describe cars;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(40) | YES  |     | NULL    |       |
+| color  | varchar(15) | YES  |     | NULL    |       |
+| make   | varchar(30) | YES  |     | NULL    |       |
+| model  | varchar(30) | YES  |     | NULL    |       |
+| price  | int(10)     | YES  |     | NULL    |       |
+| mfd    | date        | YES  |     | NULL    |       |
+| owned  | date        | YES  |     | NULL    |       |
+| owner  | varchar(30) | YES  |     | NULL    |       |
+| hp     | int(4)      | YES  |     | NULL    |       |
+| milage | int(3)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+10 rows in set (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> insert into cars values("Maruthi", "black", "2018", "desire vdi", 800000, "2018-07-21", "2018-07-21", "Manoj", 22000, 15);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> 
+mysql> 
+mysql> insert into cars values("Ferari", "Red", "2018", "LMT",20000000, "2018-05-01", "2018-06-04","Ravi", 5000, 5);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> 
+mysql> insert into cars values("Mini Cooper","Black", "2018", "V1", 3000000, "2017-04-01", "2018-07-04", "Ragini", 3000, 0);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> 
+mysql> 
+mysql> insert into cars values("BenZ", "White", "2018", "C class", 7000000, "2016-05-04", "2018-04-03", "Ajit", 4000,9);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> 
+mysql> 
+mysql> insert into cars values("Audi", "Black", "2017",  "A7", 8000000, "2017-03-06", "2018-09-02", "Prasanth", 4500, 6); 
+Query OK, 1 row affected (0.04 sec)
+
+mysql> 
+mysql> insert into cars values("BMW", "Grey", "2018", "7 Series", 15000000,"2018-11-01","2018-11-29", "Suri Babu", 4800, 7 );
+Query OK, 1 row affected (0.07 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name,color,model, price, mfd, owned from cars;
++-------------+-------+------------+----------+------------+------------+
+| name        | color | model      | price    | mfd        | owned      |
++-------------+-------+------------+----------+------------+------------+
+| Maruthi     | black | desire vdi |   800000 | 2018-07-21 | 2018-07-21 |
+| Ferari      | Red   | LMT        | 20000000 | 2018-05-01 | 2018-06-04 |
+| Mini Cooper | Black | V1         |  3000000 | 2017-04-01 | 2018-07-04 |
+| BenZ        | White | C class    |  7000000 | 2016-05-04 | 2018-04-03 |
+| Audi        | Black | A7         |  8000000 | 2017-03-06 | 2018-09-02 |
+| BMW         | Grey  | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 |
++-------------+-------+------------+----------+------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, mfd,owned from cars;
++-------------+------------+------------+
+| name        | mfd        | owned      |
++-------------+------------+------------+
+| Maruthi     | 2018-07-21 | 2018-07-21 |
+| Ferari      | 2018-05-01 | 2018-06-04 |
+| Mini Cooper | 2017-04-01 | 2018-07-04 |
+| BenZ        | 2016-05-04 | 2018-04-03 |
+| Audi        | 2017-03-06 | 2018-09-02 |
+| BMW         | 2018-11-01 | 2018-11-29 |
++-------------+------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name,color,model, price, mfd, owned from cars;
++-------------+-------+------------+----------+------------+------------+
+| name        | color | model      | price    | mfd        | owned      |
++-------------+-------+------------+----------+------------+------------+
+| Maruthi     | black | desire vdi |   800000 | 2018-07-21 | 2018-07-21 |
+| Ferari      | Red   | LMT        | 20000000 | 2018-05-01 | 2018-06-04 |
+| Mini Cooper | Black | V1         |  3000000 | 2017-04-01 | 2018-07-04 |
+| BenZ        | White | C class    |  7000000 | 2016-05-04 | 2018-04-03 |
+| Audi        | Black | A7         |  8000000 | 2017-03-06 | 2018-09-02 |
+| BMW         | Grey  | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 |
++-------------+-------+------------+----------+------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, color from cars where color = "Black";
++-------------+-------+
+| name        | color |
++-------------+-------+
+| Maruthi     | black |
+| Mini Cooper | Black |
+| Audi        | Black |
++-------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, price from cars where price > 8000000;
++--------+----------+
+| name   | price    |
++--------+----------+
+| Ferari | 20000000 |
+| BMW    | 15000000 |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, price from cars where price = 8000000;
++------+---------+
+| name | price   |
++------+---------+
+| Audi | 8000000 |
++------+---------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select name, price from cars where price < 8000000;
++-------------+---------+
+| name        | price   |
++-------------+---------+
+| Maruthi     |  800000 |
+| Mini Cooper | 3000000 |
+| BenZ        | 7000000 |
++-------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, owner, owned, model from cars where owned > "2018-07-03";
++-------------+-----------+------------+------------+
+| name        | owner     | owned      | model      |
++-------------+-----------+------------+------------+
+| Maruthi     | Manoj     | 2018-07-21 | desire vdi |
+| Mini Cooper | Ragini    | 2018-07-04 | V1         |
+| Audi        | Prasanth  | 2018-09-02 | A7         |
+| BMW         | Suri Babu | 2018-11-29 | 7 Series   |
++-------------+-----------+------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, owner, owned, model from cars where owned > "2018-07-03" && "2018-07-03";
++-------------+-----------+------------+------------+
+| name        | owner     | owned      | model      |
++-------------+-----------+------------+------------+
+| Maruthi     | Manoj     | 2018-07-21 | desire vdi |
+| Mini Cooper | Ragini    | 2018-07-04 | V1         |
+| Audi        | Prasanth  | 2018-09-02 | A7         |
+| BMW         | Suri Babu | 2018-11-29 | 7 Series   |
++-------------+-----------+------------+------------+
+4 rows in set, 1 warning (0.00 sec)
+
+mysql> 
+mysql> select name, owner, owned, model from cars where owned > "2018-07-03", mfd > "2017-07-03";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', mfd > "2017-07-03"' at line 1
+mysql> 
+mysql> select name, owner, owned, model from cars where owned > "2018-07-03" mfd > "2017-07-03";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mfd > "2017-07-03"' at line 1
+mysql> 
+mysql> select name, owner, owned, model from cars where owned > "2018-07-03" &&  mfd > "2017-07-03";
++---------+-----------+------------+------------+
+| name    | owner     | owned      | model      |
++---------+-----------+------------+------------+
+| Maruthi | Manoj     | 2018-07-21 | desire vdi |
+| BMW     | Suri Babu | 2018-11-29 | 7 Series   |
++---------+-----------+------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, owner, owned, model from cars where owned = "2018-07-21" &&  mfd = "2018-07-21";
++---------+-------+------------+------------+
+| name    | owner | owned      | model      |
++---------+-------+------------+------------+
+| Maruthi | Manoj | 2018-07-21 | desire vdi |
++---------+-------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, owner, owned, model from cars where owned > "2018-07-03" ||  mfd > "2017-07-03";
++-------------+-----------+------------+------------+
+| name        | owner     | owned      | model      |
++-------------+-----------+------------+------------+
+| Maruthi     | Manoj     | 2018-07-21 | desire vdi |
+| Ferari      | Ravi      | 2018-06-04 | LMT        |
+| Mini Cooper | Ragini    | 2018-07-04 | V1         |
+| Audi        | Prasanth  | 2018-09-02 | A7         |
+| BMW         | Suri Babu | 2018-11-29 | 7 Series   |
++-------------+-----------+------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, owner, owned, mfd, model from cars where owned > "2018-07-03" ||  mfd > "2017-07-03";
++-------------+-----------+------------+------------+------------+
+| name        | owner     | owned      | mfd        | model      |
++-------------+-----------+------------+------------+------------+
+| Maruthi     | Manoj     | 2018-07-21 | 2018-07-21 | desire vdi |
+| Ferari      | Ravi      | 2018-06-04 | 2018-05-01 | LMT        |
+| Mini Cooper | Ragini    | 2018-07-04 | 2017-04-01 | V1         |
+| Audi        | Prasanth  | 2018-09-02 | 2017-03-06 | A7         |
+| BMW         | Suri Babu | 2018-11-29 | 2018-11-01 | 7 Series   |
++-------------+-----------+------------+------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars where make = "2018";
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars where color = "Grey";
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| BMW  | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, milage from cars where milage>10;
++---------+--------+
+| name    | milage |
++---------+--------+
+| Maruthi |     15 |
++---------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select name, owner, milage from cars where milage>10;
++---------+-------+--------+
+| name    | owner | milage |
++---------+-------+--------+
+| Maruthi | Manoj |     15 |
++---------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, owner, milage from cars where milage<10;
++-------------+-----------+--------+
+| name        | owner     | milage |
++-------------+-----------+--------+
+| Ferari      | Ravi      |      5 |
+| Mini Cooper | Ragini    |      0 |
+| BenZ        | Ajit      |      9 |
+| Audi        | Prasanth  |      6 |
+| BMW         | Suri Babu |      7 |
++-------------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, owner from cars where color="white";
++------+-------+
+| name | owner |
++------+-------+
+| BenZ | Ajit  |
++------+-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, owner from cars where name = "BenZ";
++------+-------+
+| name | owner |
++------+-------+
+| BenZ | Ajit  |
++------+-------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars where hp > 5000;
++---------+-------+------+------------+--------+------------+------------+-------+-------+--------+
+| name    | color | make | model      | price  | mfd        | owned      | owner | hp    | milage |
++---------+-------+------+------------+--------+------------+------------+-------+-------+--------+
+| Maruthi | black | 2018 | desire vdi | 800000 | 2018-07-21 | 2018-07-21 | Manoj | 22000 |     15 |
++---------+-------+------+------------+--------+------------+------------+-------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars where hp>5000 || hp<4000;
++-------------+-------+------+------------+---------+------------+------------+--------+-------+--------+
+| name        | color | make | model      | price   | mfd        | owned      | owner  | hp    | milage |
++-------------+-------+------+------------+---------+------------+------------+--------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |  800000 | 2018-07-21 | 2018-07-21 | Manoj  | 22000 |     15 |
+| Mini Cooper | Black | 2018 | V1         | 3000000 | 2017-04-01 | 2018-07-04 | Ragini |  3000 |      0 |
++-------------+-------+------+------------+---------+------------+------------+--------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars where make < 2015;
+Empty set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars where (color = "black" && price>8000000);
+Empty set (0.00 sec)
+
+mysql> select * from cars where color = "black" && price>8000000;
+Empty set (0.00 sec)
+
+mysql> select * from cars where color = "black" && price=>8000000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=>8000000' at line 1
+mysql> 
+mysql> select * from cars where color = "black" && price>=8000000;
++------+-------+------+-------+---------+------------+------------+----------+------+--------+
+| name | color | make | model | price   | mfd        | owned      | owner    | hp   | milage |
++------+-------+------+-------+---------+------------+------------+----------+------+--------+
+| Audi | Black | 2017 | A7    | 8000000 | 2017-03-06 | 2018-09-02 | Prasanth | 4500 |      6 |
++------+-------+------+-------+---------+------------+------------+----------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars where color = ("black" && price>=8000000) || milage<10;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set, 12 warnings (0.00 sec)
+
+mysql> 
+mysql> select * from cars where color = ("black" && price>8000000) || milage<10;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set, 12 warnings (0.00 sec)
+
+mysql> 
+mysql> select * from cars where color = ("black" && price>9000000) || milage<10;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set, 12 warnings (0.00 sec)
+
+mysql> 
+mysql> select * from cars where (color = "black" && price>9000000) || milage<10;
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name        | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| Ferari      | Red   | 2018 | LMT      | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      | 5000 |      5 |
+| Mini Cooper | Black | 2018 | V1       |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    | 3000 |      0 |
+| BenZ        | White | 2018 | C class  |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      | 4000 |      9 |
+| Audi        | Black | 2017 | A7       |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  | 4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars where milage<10;
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name        | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| Ferari      | Red   | 2018 | LMT      | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      | 5000 |      5 |
+| Mini Cooper | Black | 2018 | V1       |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    | 3000 |      0 |
+| BenZ        | White | 2018 | C class  |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      | 4000 |      9 |
+| Audi        | Black | 2017 | A7       |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  | 4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars where milage<10 order by milage desc;
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name        | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| BenZ        | White | 2018 | C class  |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      | 4000 |      9 |
+| BMW         | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
+| Audi        | Black | 2017 | A7       |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  | 4500 |      6 |
+| Ferari      | Red   | 2018 | LMT      | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      | 5000 |      5 |
+| Mini Cooper | Black | 2018 | V1       |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    | 3000 |      0 |
++-------------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, owner, price from cars order by price;
++-------------+-----------+----------+
+| name        | owner     | price    |
++-------------+-----------+----------+
+| Maruthi     | Manoj     |   800000 |
+| Mini Cooper | Ragini    |  3000000 |
+| BenZ        | Ajit      |  7000000 |
+| Audi        | Prasanth  |  8000000 |
+| BMW         | Suri Babu | 15000000 |
+| Ferari      | Ravi      | 20000000 |
++-------------+-----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, owner, price from cars order by price asce;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asce' at line 1
+mysql> 
+mysql> select name, owner, price from cars order by price asc;
++-------------+-----------+----------+
+| name        | owner     | price    |
++-------------+-----------+----------+
+| Maruthi     | Manoj     |   800000 |
+| Mini Cooper | Ragini    |  3000000 |
+| BenZ        | Ajit      |  7000000 |
+| Audi        | Prasanth  |  8000000 |
+| BMW         | Suri Babu | 15000000 |
+| Ferari      | Ravi      | 20000000 |
++-------------+-----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars order by mfd desc;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars order by hp;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars order by hp, milage;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars order by hp, mfd;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars order by mfd;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| BMW         | Grey  | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars order by mfd, hp desc;
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name        | color | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++-------------+-------+------+------------+----------+------------+------------+-----------+-------+--------+
+| BenZ        | White | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi        | Black | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| Mini Cooper | Black | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| Ferari      | Red   | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Maruthi     | black | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 220
