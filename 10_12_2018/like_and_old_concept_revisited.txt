@@ -1,0 +1,896 @@
+mysql> 
+mysql> 
+mysql> 
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cars               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pets               |
+| sys                |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> 
+mysql> use cars;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databases' at line 1
+mysql> 
+mysql> select databse();
+ERROR 1305 (42000): FUNCTION cars.databse does not exist
+mysql> 
+mysql> select database();
++------------+
+| database() |
++------------+
+| cars       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_cars |
++----------------+
+| cars           |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> describe cars;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(40) | YES  |     | NULL    |       |
+| color  | varchar(15) | YES  |     | NULL    |       |
+| make   | varchar(30) | YES  |     | NULL    |       |
+| model  | varchar(30) | YES  |     | NULL    |       |
+| price  | int(10)     | YES  |     | NULL    |       |
+| mfd    | date        | YES  |     | NULL    |       |
+| owned  | date        | YES  |     | NULL    |       |
+| owner  | varchar(30) | YES  |     | NULL    |       |
+| hp     | int(4)      | YES  |     | NULL    |       |
+| milage | int(3)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select TIMESTAMPDIFF(DAYS, current_date, current_date + INTERVAL -5 DAYS);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DAYS, current_date, current_date + INTERVAL -5 DAYS)' at line 1
+mysql> select TIMESTAMPDIFF(DAYS, current_date, current_date + INTERVAL -5 DAY);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DAYS, current_date, current_date + INTERVAL -5 DAY)' at line 1
+mysql> 
+mysql> select TIMESTAMPDIFF(DAY, current_date, current_date + INTERVAL -5 DAY);
++------------------------------------------------------------------+
+| TIMESTAMPDIFF(DAY, current_date, current_date + INTERVAL -5 DAY) |
++------------------------------------------------------------------+
+|                                                               -5 |
++------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> select TIMESTAMPDIFF(DAY, current_date, "2018-12-05");
++------------------------------------------------+
+| TIMESTAMPDIFF(DAY, current_date, "2018-12-05") |
++------------------------------------------------+
+|                                             -5 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select TIMESTAMPDIFF(DAY, current_date, "2018-12-15");
++------------------------------------------------+
+| TIMESTAMPDIFF(DAY, current_date, "2018-12-15") |
++------------------------------------------------+
+|                                              5 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select TIMESTAMPDIFF(DAY, current_date, "2018-12-15") as diff_in_days;
++--------------+
+| diff_in_days |
++--------------+
+|            5 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select TIMESTAMPDIFF(WEEK, current_date, "2018-12-15") as diff_in_days;
++--------------+
+| diff_in_days |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select TIMESTAMPDIFF(WEEK, current_date, "2018-12-20") as diff_in_days;
++--------------+
+| diff_in_days |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select TIMESTAMPDIFF(WEEK, current_date, "2019-12-20") as diff_in_days;
++--------------+
+| diff_in_days |
++--------------+
+|           53 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select current_date;
++--------------+
+| current_date |
++--------------+
+| 2018-12-10   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2018-12-10 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select NULL is NULL;
++--------------+
+| NULL is NULL |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select NULL is NULL as isNUll;
++--------+
+| isNUll |
++--------+
+|      1 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select "" is NULL as isNUll;
++--------+
+| isNUll |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select "sekhar" is NULL as isNUll;
++--------+
+| isNUll |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, color,model, owner from cars;
++--------------+--------+------------+-----------+
+| name         | color  | model      | owner     |
++--------------+--------+------------+-----------+
+| Maruthi      | black  | desire vdi | Manoj     |
+| Ferari       | Red    | LMT        | Ravi      |
+| Mini Cooper  | Black  | V1         | Ragini    |
+| BenZ         | White  | C class    | Ajit      |
+| Audi         | Black  | A7         | Prasanth  |
+| BMW          | Grey   | 7 Series   | Suri Babu |
+| BMW          | Red    | 5 Series   | Sampath   |
+| BenZ         | Green  | GLA        | Sampath   |
+| Audi         | Silver | R8         | Rambabu   |
+| maruthi      | red    | 800        | Manoj     |
+| maruthi      | balck  | k10        | NULL      |
+| Ranger rover | black  | Discover   | Ravi      |
+| Ranger rover | black  | Discover   | Ravi      |
++--------------+--------+------------+-----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, color, model, owner from cars where name="Maruthi";
++---------+-------+------------+-------+
+| name    | color | model      | owner |
++---------+-------+------------+-------+
+| Maruthi | black | desire vdi | Manoj |
+| maruthi | red   | 800        | Manoj |
+| maruthi | balck | k10        | NULL  |
++---------+-------+------------+-------+
+3 rows in set (0.01 sec)
+
+mysql> 
+mysql> select * from cars where owner is null;
++---------+-------+------+-------+--------+------+-------+-------+------+--------+
+| name    | color | make | model | price  | mfd  | owned | owner | hp   | milage |
++---------+-------+------+-------+--------+------+-------+-------+------+--------+
+| maruthi | balck | 2016 | k10   | 300000 | NULL | NULL  | NULL  |  600 |     26 |
++---------+-------+------+-------+--------+------+-------+-------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars where owned <= CURRENT_DATE + INTERVAL -1 YEAR;
++---------+-------+------+-------+--------+------------+------------+-------+------+--------+
+| name    | color | make | model | price  | mfd        | owned      | owner | hp   | milage |
++---------+-------+------+-------+--------+------------+------------+-------+------+--------+
+| maruthi | red   | 2004 | 800   | 400000 | 2012-03-28 | 2013-04-06 | Manoj |  800 |     22 |
++---------+-------+------+-------+--------+------------+------------+-------+------+--------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select owned from cars;
++------------+
+| owned      |
++------------+
+| 2018-07-21 |
+| 2018-06-04 |
+| 2018-07-04 |
+| 2018-04-03 |
+| 2018-09-02 |
+| 2018-11-29 |
+| 2018-11-05 |
+| 2018-11-13 |
+| 2018-11-19 |
+| 2013-04-06 |
+| NULL       |
+| 2018-12-06 |
+| 2019-01-01 |
++------------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> select TIMESTAMPDIFF(MONTH, mfd, owned);
+ERROR 1054 (42S22): Unknown column 'mfd' in 'field list'
+mysql> select TIMESTAMPDIFF(MONTH, mfd, owned) from cars;
++----------------------------------+
+| TIMESTAMPDIFF(MONTH, mfd, owned) |
++----------------------------------+
+|                                0 |
+|                                1 |
+|                               15 |
+|                               22 |
+|                               17 |
+|                                0 |
+|                                5 |
+|                                0 |
+|                                8 |
+|                               12 |
+|                             NULL |
+|                                0 |
+|                                0 |
++----------------------------------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, model, mfd, owned, owner,  TIMESTAMPDIFF(MONTH, mfd, owned) from cars
+    -> TIMESTAMPDIFF(MONTH, mfd, owned)>12;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(MONTH, mfd, owned)>12' at line 2
+mysql> 
+mysql> select name, model, mfd, owned, owner,  TIMESTAMPDIFF(MONTH, mfd, owned) from cars where TIMESTAMPDIFF(MONTH, mfd, owned)>12
+    -> ;
++-------------+---------+------------+------------+----------+----------------------------------+
+| name        | model   | mfd        | owned      | owner    | TIMESTAMPDIFF(MONTH, mfd, owned) |
++-------------+---------+------------+------------+----------+----------------------------------+
+| Mini Cooper | V1      | 2017-04-01 | 2018-07-04 | Ragini   |                               15 |
+| BenZ        | C class | 2016-05-04 | 2018-04-03 | Ajit     |                               22 |
+| Audi        | A7      | 2017-03-06 | 2018-09-02 | Prasanth |                               17 |
++-------------+---------+------------+------------+----------+----------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, model, mfd, owned, owner,  TIMESTAMPDIFF(MONTH, mfd, owned) from cars where TIMESTAMPDIFF(MONTH, mfd, owned)>12
+    -> 
+    -> 
+    -> ;
++-------------+---------+------------+------------+----------+----------------------------------+
+| name        | model   | mfd        | owned      | owner    | TIMESTAMPDIFF(MONTH, mfd, owned) |
++-------------+---------+------------+------------+----------+----------------------------------+
+| Mini Cooper | V1      | 2017-04-01 | 2018-07-04 | Ragini   |                               15 |
+| BenZ        | C class | 2016-05-04 | 2018-04-03 | Ajit     |                               22 |
+| Audi        | A7      | 2017-03-06 | 2018-09-02 | Prasanth |                               17 |
++-------------+---------+------------+------------+----------+----------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> select name, model, mfd, owned, owner,  TIMESTAMPDIFF(MONTH, mfd, owned) from cars 
+    -> where TIMESTAMPDIFF(MONTH, mfd, owned)>12;
++-------------+---------+------------+------------+----------+----------------------------------+
+| name        | model   | mfd        | owned      | owner    | TIMESTAMPDIFF(MONTH, mfd, owned) |
++-------------+---------+------------+------------+----------+----------------------------------+
+| Mini Cooper | V1      | 2017-04-01 | 2018-07-04 | Ragini   |                               15 |
+| BenZ        | C class | 2016-05-04 | 2018-04-03 | Ajit     |                               22 |
+| Audi        | A7      | 2017-03-06 | 2018-09-02 | Prasanth |                               17 |
++-------------+---------+------------+------------+----------+----------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, model, mfd, owned, owner,  TIMESTAMPDIFF(MONTH, mfd, owned) from cars  where TIMESTAMPDIFF(MONTH, mfd, owned)>12;ç^C
+mysql> ^C
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name,owner from cars LIKE("%i");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIKE("%i")' at line 1
+mysql> 
+mysql> select name,owner from cars LIKE "%i";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIKE "%i"' at line 1
+mysql> 
+mysql> 
+mysql> 
+mysql> select name,owner from cars name LIKE "%i";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIKE "%i"' at line 1
+mysql> 
+mysql> select name,owner from cars where name LIKE "%i";
++---------+----------+
+| name    | owner    |
++---------+----------+
+| Maruthi | Manoj    |
+| Ferari  | Ravi     |
+| Audi    | Prasanth |
+| Audi    | Rambabu  |
+| maruthi | Manoj    |
+| maruthi | NULL     |
++---------+----------+
+6 rows in set (0.01 sec)
+
+mysql> 
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,owner from cars where name LIKE "%e%";
++--------------+---------+
+| name         | owner   |
++--------------+---------+
+| Ferari       | Ravi    |
+| Mini Cooper  | Ragini  |
+| BenZ         | Ajit    |
+| BenZ         | Sampath |
+| Ranger rover | Ravi    |
+| Ranger rover | Ravi    |
++--------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,owner from cars where name LIKE "b%";
++------+-----------+
+| name | owner     |
++------+-----------+
+| BenZ | Ajit      |
+| BMW  | Suri Babu |
+| BMW  | Sampath   |
+| BenZ | Sampath   |
++------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,owner from cars where name LIKE "_Z";
+Empty set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name,owner from cars where name LIKE "b_n%";
++------+---------+
+| name | owner   |
++------+---------+
+| BenZ | Ajit    |
+| BenZ | Sampath |
++------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name,owner from cars where owner LIKE "_am%";
++------+---------+
+| name | owner   |
++------+---------+
+| BMW  | Sampath |
+| BenZ | Sampath |
+| Audi | Rambabu |
++------+---------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,owner from cars where owner LIKE "%";
++--------------+-----------+
+| name         | owner     |
++--------------+-----------+
+| Maruthi      | Manoj     |
+| Ferari       | Ravi      |
+| Mini Cooper  | Ragini    |
+| BenZ         | Ajit      |
+| Audi         | Prasanth  |
+| BMW          | Suri Babu |
+| BMW          | Sampath   |
+| BenZ         | Sampath   |
+| Audi         | Rambabu   |
+| maruthi      | Manoj     |
+| Ranger rover | Ravi      |
+| Ranger rover | Ravi      |
++--------------+-----------+
+12 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,owner from cars where price LIKE "%";
++--------------+-----------+
+| name         | owner     |
++--------------+-----------+
+| Maruthi      | Manoj     |
+| Ferari       | Ravi      |
+| Mini Cooper  | Ragini    |
+| BenZ         | Ajit      |
+| Audi         | Prasanth  |
+| BMW          | Suri Babu |
+| BMW          | Sampath   |
+| BenZ         | Sampath   |
+| Audi         | Rambabu   |
+| maruthi      | Manoj     |
+| maruthi      | NULL      |
+| Ranger rover | Ravi      |
+| Ranger rover | Ravi      |
++--------------+-----------+
+13 rows in set (0.01 sec)
+
+mysql> select name,owner, price from cars where price LIKE "%";
++--------------+-----------+----------+
+| name         | owner     | price    |
++--------------+-----------+----------+
+| Maruthi      | Manoj     |   800000 |
+| Ferari       | Ravi      | 20000000 |
+| Mini Cooper  | Ragini    |  3000000 |
+| BenZ         | Ajit      |  7000000 |
+| Audi         | Prasanth  |  8000000 |
+| BMW          | Suri Babu | 15000000 |
+| BMW          | Sampath   |  6000000 |
+| BenZ         | Sampath   |  9000000 |
+| Audi         | Rambabu   | 12000000 |
+| maruthi      | Manoj     |   400000 |
+| maruthi      | NULL      |   300000 |
+| Ranger rover | Ravi      |  4000000 |
+| Ranger rover | Ravi      |  4000000 |
++--------------+-----------+----------+
+13 rows in set (0.00 sec)
+
+mysql> select name,owner, price from cars where price LIKE "1%";
++------+-----------+----------+
+| name | owner     | price    |
++------+-----------+----------+
+| BMW  | Suri Babu | 15000000 |
+| Audi | Rambabu   | 12000000 |
++------+-----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,owner, price from cars where price LIKE "%5%";
++------+-----------+----------+
+| name | owner     | price    |
++------+-----------+----------+
+| BMW  | Suri Babu | 15000000 |
++------+-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> \
+mysql> select name,owner, price from cars where price LIKE "_5%";
++------+-----------+----------+
+| name | owner     | price    |
++------+-----------+----------+
+| BMW  | Suri Babu | 15000000 |
++------+-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select name,owner, price from cars where price LIKE "__000000";
++--------+-----------+----------+
+| name   | owner     | price    |
++--------+-----------+----------+
+| Ferari | Ravi      | 20000000 |
+| BMW    | Suri Babu | 15000000 |
+| Audi   | Rambabu   | 12000000 |
++--------+-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,owner, price from cars where price LIKE "1__000000__";
+Empty set (0.00 sec)
+
+mysql> select name,owner, price from cars where price LIKE "1__000000";
+Empty set (0.00 sec)
+
+mysql> 
+mysql> select name,owner, price from cars where price LIKE "1_0__00%";
++------+-----------+----------+
+| name | owner     | price    |
++------+-----------+----------+
+| BMW  | Suri Babu | 15000000 |
+| Audi | Rambabu   | 12000000 |
++------+-----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select name,owner, price from cars where price LIKE "1_0__00";
+Empty set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name,owner, price from cars where price LIKE "1_0__00" ^C
+mysql> 
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from cars where price>5000000 model like "%Series";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'model like "%Series"' at line 1
+mysql> select * from cars where price>5000000, model like "%Series";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', model like "%Series"' at line 1
+mysql> 
+mysql> select * from cars model like "%Series";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like "%Series"' at line 1
+mysql> 
+mysql> select * from cars model where nlike "%Series";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"%Series"' at line 1
+mysql> select * from cars model where model like "%Series";
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| BMW  | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
+| BMW  | Red   | 2015 | 5 Series |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   | 4500 |     12 |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars model where model like "%Series";
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| BMW  | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
+| BMW  | Red   | 2015 | 5 Series |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   | 4500 |     12 |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from cars where model like "%Series";
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| BMW  | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
+| BMW  | Red   | 2015 | 5 Series |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   | 4500 |     12 |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars where model like "%Series" and price > 7000000;
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| name | color | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+| BMW  | Grey  | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
++------+-------+------+----------+----------+------------+------------+-----------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars where model like "%Series" , price > 7000000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', price > 7000000' at line 1
+mysql> 
+mysql> select * from cars where model like "%Series" or price > 7000000;
++--------+--------+------+----------+----------+------------+------------+-----------+------+--------+
+| name   | color  | make | model    | price    | mfd        | owned      | owner     | hp   | milage |
++--------+--------+------+----------+----------+------------+------------+-----------+------+--------+
+| Ferari | Red    | 2018 | LMT      | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      | 5000 |      5 |
+| Audi   | Black  | 2017 | A7       |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  | 4500 |      6 |
+| BMW    | Grey   | 2018 | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu | 4800 |      7 |
+| BMW    | Red    | 2015 | 5 Series |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   | 4500 |     12 |
+| BenZ   | Green  | 2014 | GLA      |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   | 4500 |     10 |
+| Audi   | Silver | 2016 | R8       | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   | 4500 |     12 |
++--------+--------+------+----------+----------+------------+------------+-----------+------+--------+
+6 rows in set (0.01 sec)
+
+mysql> 
+mysql> select * from cars where model like "%Series" or price > 7000000 or milage>10;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, model, price, mfd, owned, milage, owner from cars where model like "%Series" or price > 7000000 or milage>10;
++--------------+------------+----------+------------+------------+--------+-----------+
+| name         | model      | price    | mfd        | owned      | milage | owner     |
++--------------+------------+----------+------------+------------+--------+-----------+
+| Maruthi      | desire vdi |   800000 | 2018-07-21 | 2018-07-21 |     15 | Manoj     |
+| Ferari       | LMT        | 20000000 | 2018-05-01 | 2018-06-04 |      5 | Ravi      |
+| Audi         | A7         |  8000000 | 2017-03-06 | 2018-09-02 |      6 | Prasanth  |
+| BMW          | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 |      7 | Suri Babu |
+| BMW          | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 |     12 | Sampath   |
+| BenZ         | GLA        |  9000000 | 2018-10-14 | 2018-11-13 |     10 | Sampath   |
+| Audi         | R8         | 12000000 | 2018-02-28 | 2018-11-19 |     12 | Rambabu   |
+| maruthi      | 800        |   400000 | 2012-03-28 | 2013-04-06 |     22 | Manoj     |
+| maruthi      | k10        |   300000 | NULL       | NULL       |     26 | NULL      |
+| Ranger rover | Discover   |  4000000 | 2018-12-06 | 2018-12-06 |     12 | Ravi      |
+| Ranger rover | Discover   |  4000000 | 2018-12-06 | 2019-01-01 |     12 | Ravi      |
++--------------+------------+----------+------------+------------+--------+-----------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, model, price, mfd, owned, milage, owner from cars where model like "%Series" or price > 7000000 or milage>10;
++--------------+------------+----------+------------+------------+--------+-----------+
+| name         | model      | price    | mfd        | owned      | milage | owner     |
++--------------+------------+----------+------------+------------+--------+-----------+
+| Maruthi      | desire vdi |   800000 | 2018-07-21 | 2018-07-21 |     15 | Manoj     |
+| Ferari       | LMT        | 20000000 | 2018-05-01 | 2018-06-04 |      5 | Ravi      |
+| Audi         | A7         |  8000000 | 2017-03-06 | 2018-09-02 |      6 | Prasanth  |
+| BMW          | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 |      7 | Suri Babu |
+| BMW          | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 |     12 | Sampath   |
+| BenZ         | GLA        |  9000000 | 2018-10-14 | 2018-11-13 |     10 | Sampath   |
+| Audi         | R8         | 12000000 | 2018-02-28 | 2018-11-19 |     12 | Rambabu   |
+| maruthi      | 800        |   400000 | 2012-03-28 | 2013-04-06 |     22 | Manoj     |
+| maruthi      | k10        |   300000 | NULL       | NULL       |     26 | NULL      |
+| Ranger rover | Discover   |  4000000 | 2018-12-06 | 2018-12-06 |     12 | Ravi      |
+| Ranger rover | Discover   |  4000000 | 2018-12-06 | 2019-01-01 |     12 | Ravi      |
++--------------+------------+----------+------------+------------+--------+-----------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, model, price, mfd, owned, milage, owner from cars where model like "%Series" or price > 7000000 or milage>10;^C
+mysql> select name, model, price, mfd, owned, milage, owner from cars
+    -> where model like "%Series" or price > 7000000 or milage>10;
++--------------+------------+----------+------------+------------+--------+-----------+
+| name         | model      | price    | mfd        | owned      | milage | owner     |
++--------------+------------+----------+------------+------------+--------+-----------+
+| Maruthi      | desire vdi |   800000 | 2018-07-21 | 2018-07-21 |     15 | Manoj     |
+| Ferari       | LMT        | 20000000 | 2018-05-01 | 2018-06-04 |      5 | Ravi      |
+| Audi         | A7         |  8000000 | 2017-03-06 | 2018-09-02 |      6 | Prasanth  |
+| BMW          | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 |      7 | Suri Babu |
+| BMW          | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 |     12 | Sampath   |
+| BenZ         | GLA        |  9000000 | 2018-10-14 | 2018-11-13 |     10 | Sampath   |
+| Audi         | R8         | 12000000 | 2018-02-28 | 2018-11-19 |     12 | Rambabu   |
+| maruthi      | 800        |   400000 | 2012-03-28 | 2013-04-06 |     22 | Manoj     |
+| maruthi      | k10        |   300000 | NULL       | NULL       |     26 | NULL      |
+| Ranger rover | Discover   |  4000000 | 2018-12-06 | 2018-12-06 |     12 | Ravi      |
+| Ranger rover | Discover   |  4000000 | 2018-12-06 | 2019-01-01 |     12 | Ravi      |
++--------------+------------+----------+------------+------------+--------+-----------+
+11 rows in set (0.01 sec)
+
+mysql> select name, model, price, mfd, owned, milage, owner from cars
+    ->     -> where model like "%Series" or price > 7000000 or milage>10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> where model like "%Series" or price > 7000000 or milage>10' at line 2
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, model, price, mfd, owned, milage, owner from cars
+    ->     -> where model like "%Series" or price > 7000000 or milage>10;^C
+mysql> 
+mysql> 
+mysql> select name, model, price, mfd, owned, milage, owner from cars
+    -> where model like "%Series" or (price > 7000000 and  milage>10);
++------+----------+----------+------------+------------+--------+-----------+
+| name | model    | price    | mfd        | owned      | milage | owner     |
++------+----------+----------+------------+------------+--------+-----------+
+| BMW  | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 |      7 | Suri Babu |
+| BMW  | 5 Series |  6000000 | 2018-06-01 | 2018-11-05 |     12 | Sampath   |
+| Audi | R8       | 12000000 | 2018-02-28 | 2018-11-19 |     12 | Rambabu   |
++------+----------+----------+------------+------------+--------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, model, price, mfd, owned, milage, owner from cars
+    -> where model like "%Series" or (price > 7000000) and (milage>10);
++------+----------+----------+------------+------------+--------+-----------+
+| name | model    | price    | mfd        | owned      | milage | owner     |
++------+----------+----------+------------+------------+--------+-----------+
+| BMW  | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 |      7 | Suri Babu |
+| BMW  | 5 Series |  6000000 | 2018-06-01 | 2018-11-05 |     12 | Sampath   |
+| Audi | R8       | 12000000 | 2018-02-28 | 2018-11-19 |     12 | Rambabu   |
++------+----------+----------+------------+------------+--------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, model, price, mfd, owned, milage, owner from cars where model like "%Series" or (price > 7000000) and (milage>10);^C
+mysql> ^C
+mysql> ^C
+mysql> select name, model, price, mfd, owned, milage, owner from cars
+    -> where model like "%Series" or ((price > 7000000 and milage>10) or owner like "%babu");
++------+----------+----------+------------+------------+--------+-----------+
+| name | model    | price    | mfd        | owned      | milage | owner     |
++------+----------+----------+------------+------------+--------+-----------+
+| BMW  | 7 Series | 15000000 | 2018-11-01 | 2018-11-29 |      7 | Suri Babu |
+| BMW  | 5 Series |  6000000 | 2018-06-01 | 2018-11-05 |     12 | Sampath   |
+| Audi | R8       | 12000000 | 2018-02-28 | 2018-11-19 |     12 | Rambabu   |
++------+----------+----------+------------+------------+--------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| cars       |
++------------+
+1 row in set (0.00 sec)
