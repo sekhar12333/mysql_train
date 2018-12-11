@@ -1,0 +1,1046 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cars               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pets               |
+| sys                |
++--------------------+
+6 rows in set (0.06 sec)
+
+mysql> use cars;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> clear
+mysql> select database();
++------------+
+| database() |
++------------+
+| cars       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+13 rows in set (0.01 sec)
+
+mysql> 
+mysql> select count(*) from cars;
++----------+
+| count(*) |
++----------+
+|       13 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> ^C
+mysql> 
+mysql> 
+mysql> select name, count(*) from cars group by name;
++--------------+----------+
+| name         | count(*) |
++--------------+----------+
+| Maruthi      |        3 |
+| Ferari       |        1 |
+| Mini Cooper  |        1 |
+| BenZ         |        2 |
+| Audi         |        2 |
+| BMW          |        2 |
+| Ranger rover |        2 |
++--------------+----------+
+7 rows in set (0.01 sec)
+
+mysql> 
+mysql> select color, count(*) from cars group by color;
++--------+----------+
+| color  | count(*) |
++--------+----------+
+| black  |        5 |
+| Red    |        3 |
+| White  |        1 |
+| Grey   |        1 |
+| Green  |        1 |
+| Silver |        1 |
+| balck  |        1 |
++--------+----------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select count(*) from cars;
++----------+
+| count(*) |
++----------+
+|       13 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select color, count(*) from cars where price>7000000 group by color ;
++--------+----------+
+| color  | count(*) |
++--------+----------+
+| Red    |        1 |
+| Black  |        1 |
+| Grey   |        1 |
+| Green  |        1 |
+| Silver |        1 |
++--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select count(*) from cars where price>7000000 group by color ;
++----------+
+| count(*) |
++----------+
+|        1 |
+|        1 |
+|        1 |
+|        1 |
+|        1 |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name,count(*) from cars where price>7000000 group by color ;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'cars.cars.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> 
+mysql> select name,color, count(*) from cars where price>7000000 group by color;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'cars.cars.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name,color, count(*) from cars where price>7000000 group by color, name;
++--------+--------+----------+
+| name   | color  | count(*) |
++--------+--------+----------+
+| Ferari | Red    |        1 |
+| Audi   | Black  |        1 |
+| BMW    | Grey   |        1 |
+| BenZ   | Green  |        1 |
+| Audi   | Silver |        1 |
++--------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, color, owner from cars;
++--------------+--------+-----------+
+| name         | color  | owner     |
++--------------+--------+-----------+
+| Maruthi      | black  | Manoj     |
+| Ferari       | Red    | Ravi      |
+| Mini Cooper  | Black  | Ragini    |
+| BenZ         | White  | Ajit      |
+| Audi         | Black  | Prasanth  |
+| BMW          | Grey   | Suri Babu |
+| BMW          | Red    | Sampath   |
+| BenZ         | Green  | Sampath   |
+| Audi         | Silver | Rambabu   |
+| maruthi      | red    | Manoj     |
+| maruthi      | balck  | NULL      |
+| Ranger rover | black  | Ravi      |
+| Ranger rover | black  | Ravi      |
++--------------+--------+-----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> insert into cars values("Ferari", ^C
+mysql> 
+mysql> describe cars;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(40) | YES  |     | NULL    |       |
+| color  | varchar(15) | YES  |     | NULL    |       |
+| make   | varchar(30) | YES  |     | NULL    |       |
+| model  | varchar(30) | YES  |     | NULL    |       |
+| price  | int(10)     | YES  |     | NULL    |       |
+| mfd    | date        | YES  |     | NULL    |       |
+| owned  | date        | YES  |     | NULL    |       |
+| owner  | varchar(30) | YES  |     | NULL    |       |
+| hp     | int(4)      | YES  |     | NULL    |       |
+| milage | int(3)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> insert into cars values("Ferari", "Red", "2010", "GTX", 8000000, "2010-12-01","mysql> insert into cars values("Ferari", "Red", "2010", "GTX", 8000000, "2010-12-01""2012-10-23", "Suri Babu", 6000, 8);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> 
+mysql> 
+mysql> insert into cars values("Audi", "black", "2010", "Q3", 8000000, "2010-12-01","2012-10-23", "Ravi", 6000, 8);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select name,color, count(*) from cars where price>7000000 group by color, name;
++--------+--------+----------+
+| name   | color  | count(*) |
++--------+--------+----------+
+| Ferari | Red    |        2 |
+| Audi   | Black  |        2 |
+| BMW    | Grey   |        1 |
+| BenZ   | Green  |        1 |
+| Audi   | Silver |        1 |
++--------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name,color, count(*) from cars where price>7000000 group by color, name;
++--------+--------+----------+
+| name   | color  | count(*) |
++--------+--------+----------+
+| Ferari | Red    |        2 |
+| Audi   | Black  |        2 |
+| BMW    | Grey   |        1 |
+| BenZ   | Green  |        1 |
+| Audi   | Silver |        1 |
++--------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name,color, count(*) from cars where price>7000000 group by color, name;^C
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, count(*) from cars order by name;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'cars.cars.name'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> select name, count(*) from cars group by name;
++--------------+----------+
+| name         | count(*) |
++--------------+----------+
+| Maruthi      |        3 |
+| Ferari       |        2 |
+| Mini Cooper  |        1 |
+| BenZ         |        2 |
+| Audi         |        3 |
+| BMW          |        2 |
+| Ranger rover |        2 |
++--------------+----------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, count(*) from cars group by owner;
++-----------+----------+
+| owner     | count(*) |
++-----------+----------+
+| Manoj     |        2 |
+| Ravi      |        4 |
+| Ragini    |        1 |
+| Ajit      |        1 |
+| Prasanth  |        1 |
+| Suri Babu |        2 |
+| Sampath   |        2 |
+| Rambabu   |        1 |
+| NULL      |        1 |
++-----------+----------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
+| Ferari       | Red    | 2010 | GTX        |  8000000 | 2010-12-01 | 2012-10-23 | Suri Babu |  6000 |      8 |
+| Audi         | black  | 2010 | Q3         |  8000000 | 2010-12-01 | 2012-10-23 | Ravi      |  6000 |      8 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, owner, model from cars;
++--------------+-----------+------------+
+| name         | owner     | model      |
++--------------+-----------+------------+
+| Maruthi      | Manoj     | desire vdi |
+| Ferari       | Ravi      | LMT        |
+| Mini Cooper  | Ragini    | V1         |
+| BenZ         | Ajit      | C class    |
+| Audi         | Prasanth  | A7         |
+| BMW          | Suri Babu | 7 Series   |
+| BMW          | Sampath   | 5 Series   |
+| BenZ         | Sampath   | GLA        |
+| Audi         | Rambabu   | R8         |
+| maruthi      | Manoj     | 800        |
+| maruthi      | NULL      | k10        |
+| Ranger rover | Ravi      | Discover   |
+| Ranger rover | Ravi      | Discover   |
+| Ferari       | Suri Babu | GTX        |
+| Audi         | Ravi      | Q3         |
++--------------+-----------+------------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, owner, count(*) from cars group by name, owner;
++--------------+-----------+----------+
+| name         | owner     | count(*) |
++--------------+-----------+----------+
+| Maruthi      | Manoj     |        2 |
+| Ferari       | Ravi      |        1 |
+| Mini Cooper  | Ragini    |        1 |
+| BenZ         | Ajit      |        1 |
+| Audi         | Prasanth  |        1 |
+| BMW          | Suri Babu |        1 |
+| BMW          | Sampath   |        1 |
+| BenZ         | Sampath   |        1 |
+| Audi         | Rambabu   |        1 |
+| maruthi      | NULL      |        1 |
+| Ranger rover | Ravi      |        2 |
+| Ferari       | Suri Babu |        1 |
+| Audi         | Ravi      |        1 |
++--------------+-----------+----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, model, owner, count(*) from cars group by model, name, owner;
++--------------+------------+-----------+----------+
+| name         | model      | owner     | count(*) |
++--------------+------------+-----------+----------+
+| Maruthi      | desire vdi | Manoj     |        1 |
+| Ferari       | LMT        | Ravi      |        1 |
+| Mini Cooper  | V1         | Ragini    |        1 |
+| BenZ         | C class    | Ajit      |        1 |
+| Audi         | A7         | Prasanth  |        1 |
+| BMW          | 7 Series   | Suri Babu |        1 |
+| BMW          | 5 Series   | Sampath   |        1 |
+| BenZ         | GLA        | Sampath   |        1 |
+| Audi         | R8         | Rambabu   |        1 |
+| maruthi      | 800        | Manoj     |        1 |
+| maruthi      | k10        | NULL      |        1 |
+| Ranger rover | Discover   | Ravi      |        2 |
+| Ferari       | GTX        | Suri Babu |        1 |
+| Audi         | Q3         | Ravi      |        1 |
++--------------+------------+-----------+----------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, owner, model from cars;
++--------------+-----------+------------+
+| name         | owner     | model      |
++--------------+-----------+------------+
+| Maruthi      | Manoj     | desire vdi |
+| Ferari       | Ravi      | LMT        |
+| Mini Cooper  | Ragini    | V1         |
+| BenZ         | Ajit      | C class    |
+| Audi         | Prasanth  | A7         |
+| BMW          | Suri Babu | 7 Series   |
+| BMW          | Sampath   | 5 Series   |
+| BenZ         | Sampath   | GLA        |
+| Audi         | Rambabu   | R8         |
+| maruthi      | Manoj     | 800        |
+| maruthi      | NULL      | k10        |
+| Ranger rover | Ravi      | Discover   |
+| Ranger rover | Ravi      | Discover   |
+| Ferari       | Suri Babu | GTX        |
+| Audi         | Ravi      | Q3         |
++--------------+-----------+------------+
+15 rows in set (0.00 sec)
+
+mysql> describe cars;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(40) | YES  |     | NULL    |       |
+| color  | varchar(15) | YES  |     | NULL    |       |
+| make   | varchar(30) | YES  |     | NULL    |       |
+| model  | varchar(30) | YES  |     | NULL    |       |
+| price  | int(10)     | YES  |     | NULL    |       |
+| mfd    | date        | YES  |     | NULL    |       |
+| owned  | date        | YES  |     | NULL    |       |
+| owner  | varchar(30) | YES  |     | NULL    |       |
+| hp     | int(4)      | YES  |     | NULL    |       |
+| milage | int(3)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, hp, count(*) from cars group by owner, hp;
++-----------+-------+----------+
+| owner     | hp    | count(*) |
++-----------+-------+----------+
+| Manoj     | 22000 |        1 |
+| Ravi      |  5000 |        1 |
+| Ragini    |  3000 |        1 |
+| Ajit      |  4000 |        1 |
+| Prasanth  |  4500 |        1 |
+| Suri Babu |  4800 |        1 |
+| Sampath   |  4500 |        2 |
+| Rambabu   |  4500 |        1 |
+| Manoj     |   800 |        1 |
+| NULL      |   600 |        1 |
+| Ravi      |  4000 |        2 |
+| Suri Babu |  6000 |        1 |
+| Ravi      |  6000 |        1 |
++-----------+-------+----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, hp, owner from cars;
++--------------+-------+-----------+
+| name         | hp    | owner     |
++--------------+-------+-----------+
+| Maruthi      | 22000 | Manoj     |
+| Ferari       |  5000 | Ravi      |
+| Mini Cooper  |  3000 | Ragini    |
+| BenZ         |  4000 | Ajit      |
+| Audi         |  4500 | Prasanth  |
+| BMW          |  4800 | Suri Babu |
+| BMW          |  4500 | Sampath   |
+| BenZ         |  4500 | Sampath   |
+| Audi         |  4500 | Rambabu   |
+| maruthi      |   800 | Manoj     |
+| maruthi      |   600 | NULL      |
+| Ranger rover |  4000 | Ravi      |
+| Ranger rover |  4000 | Ravi      |
+| Ferari       |  6000 | Suri Babu |
+| Audi         |  6000 | Ravi      |
++--------------+-------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, hp, count(*) from cars group by owner, hp;
++-----------+-------+----------+
+| owner     | hp    | count(*) |
++-----------+-------+----------+
+| Manoj     | 22000 |        1 |
+| Ravi      |  5000 |        1 |
+| Ragini    |  3000 |        1 |
+| Ajit      |  4000 |        1 |
+| Prasanth  |  4500 |        1 |
+| Suri Babu |  4800 |        1 |
+| Sampath   |  4500 |        2 |
+| Rambabu   |  4500 |        1 |
+| Manoj     |   800 |        1 |
+| NULL      |   600 |        1 |
+| Ravi      |  4000 |        2 |
+| Suri Babu |  6000 |        1 |
+| Ravi      |  6000 |        1 |
++-----------+-------+----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) from cars where hp>4000 group by owner, hp;
++-----------+-------+----------+
+| owner     | hp    | count(*) |
++-----------+-------+----------+
+| Manoj     | 22000 |        1 |
+| Ravi      |  5000 |        1 |
+| Prasanth  |  4500 |        1 |
+| Suri Babu |  4800 |        1 |
+| Sampath   |  4500 |        2 |
+| Rambabu   |  4500 |        1 |
+| Suri Babu |  6000 |        1 |
+| Ravi      |  6000 |        1 |
++-----------+-------+----------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp; 
++-----------+-------+-------+
+| owner     | hp    | count |
++-----------+-------+-------+
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Sampath   |  4500 |     2 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
+| Ravi      |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp order by count;
++-----------+-------+-------+
+| owner     | hp    | count |
++-----------+-------+-------+
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
+| Sampath   |  4500 |     2 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp order by count desc;
++-----------+-------+-------+
+| owner     | hp    | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp order by count desc limit 3;
++---------+-------+-------+
+| owner   | hp    | count |
++---------+-------+-------+
+| Sampath |  4500 |     2 |
+| Ravi    |  6000 |     1 |
+| Manoj   | 22000 |     1 |
++---------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp order by count desc limit 5;
++----------+-------+-------+
+| owner    | hp    | count |
++----------+-------+-------+
+| Sampath  |  4500 |     2 |
+| Ravi     |  6000 |     1 |
+| Manoj    | 22000 |     1 |
+| Ravi     |  5000 |     1 |
+| Prasanth |  4500 |     1 |
++----------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp order by count desc limit 500;
++-----------+-------+-------+
+| owner     | hp    | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars group by owner, hp order by count desc limit 500 where hp>4500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where hp>4500' at line 1
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp order by count desc limit 500;
++-----------+-------+-------+
+| owner     | hp    | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 order by count;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'cars.cars.owner'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 order by count group by owner;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by owner' at line 1
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 order by count group by owner, hp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by owner, hp' at line 1
+mysql> 
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 order by count group by owner;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by owner' at line 1
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select owner, hp, count(*) as count from cars where hp>4000 group by owner, hp order by count desc limit 500;
++-----------+-------+-------+
+| owner     | hp    | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner as o, hp as h, count(*) as count from cars where h>4000 group by o, hp order by count desc limit 500;
+ERROR 1054 (42S22): Unknown column 'h' in 'where clause'
+mysql> 
+mysql> select owner as o, hp as h, count(*) as count from cars where h>4000 group by o, h order by count desc limit 500;
+ERROR 1054 (42S22): Unknown column 'h' in 'where clause'
+mysql> 
+mysql> select owner as o, hp as h, count(*) as count from cars where hp>4000 group by o, hp order by count desc limit 500;
++-----------+-------+-------+
+| o         | h     | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner as o, hp as h, count(*) as count from cars where hp>4000 group by o, h by count desc limit 500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by count desc limit 500' at line 1
+mysql> 
+mysql> select owner as o, hp as h, count(*) as count from cars where hp>4000 group by o, h oder by count desc limit 500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'oder by count desc limit 500' at line 1
+mysql> select owner as o, hp as h, count(*) as count from cars where hp>4000 group by o, h oder by count desc limit 500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'oder by count desc limit 500' at line 1
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select owner as o, hp as h, count(*) as count from cars where hp>4000 group by o, h order by count desc limit 500;
++-----------+-------+-------+
+| o         | h     | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner as o, hp as h from cars where hp>4000;         
++-----------+-------+
+| o         | h     |
++-----------+-------+
+| Manoj     | 22000 |
+| Ravi      |  5000 |
+| Prasanth  |  4500 |
+| Suri Babu |  4800 |
+| Sampath   |  4500 |
+| Sampath   |  4500 |
+| Rambabu   |  4500 |
+| Suri Babu |  6000 |
+| Ravi      |  6000 |
++-----------+-------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner as o, hp as h, count(*) as count from cars where hp>4000 group by hp, owner order by count desc limit 500;
++-----------+-------+-------+
+| o         | h     | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select owner as o, hp as h, count(*) as count from cars where hp>4000 group by o, h order by count desc limit 500;
++-----------+-------+-------+
+| o         | h     | count |
++-----------+-------+-------+
+| Sampath   |  4500 |     2 |
+| Ravi      |  6000 |     1 |
+| Manoj     | 22000 |     1 |
+| Ravi      |  5000 |     1 |
+| Prasanth  |  4500 |     1 |
+| Suri Babu |  4800 |     1 |
+| Rambabu   |  4500 |     1 |
+| Suri Babu |  6000 |     1 |
++-----------+-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> mysql> selecm cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
+| Ferari       | Red    | 2010 | GTX        |  8000000 | 2010-12-01 | 2012-10-23 | Suri Babu |  6000 |      8 |
+| Audi         | black  | 2010 | Q3         |  8000000 | 2010-12-01 | 2012-10-23 | Ravi      |  6000 |      8 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select price, count(*) from cars group by price;
++----------+----------+
+| price    | count(*) |
++----------+----------+
+|   800000 |        1 |
+| 20000000 |        1 |
+|  3000000 |        1 |
+|  7000000 |        1 |
+|  8000000 |        3 |
+| 15000000 |        1 |
+|  6000000 |        1 |
+|  9000000 |        1 |
+| 12000000 |        1 |
+|   400000 |        1 |
+|   300000 |        1 |
+|  4000000 |        2 |
++----------+----------+
+12 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select milage, count(*) from cars group by milage;
++--------+----------+
+| milage | count(*) |
++--------+----------+
+|     15 |        1 |
+|      5 |        1 |
+|      0 |        1 |
+|      9 |        1 |
+|      6 |        1 |
+|      7 |        1 |
+|     12 |        4 |
+|     10 |        1 |
+|     22 |        1 |
+|     26 |        1 |
+|      8 |        2 |
++--------+----------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owned, count(*) from cars group by owned;
++------------+----------+
+| owned      | count(*) |
++------------+----------+
+| 2018-07-21 |        1 |
+| 2018-06-04 |        1 |
+| 2018-07-04 |        1 |
+| 2018-04-03 |        1 |
+| 2018-09-02 |        1 |
+| 2018-11-29 |        1 |
+| 2018-11-05 |        1 |
+| 2018-11-13 |        1 |
+| 2018-11-19 |        1 |
+| 2013-04-06 |        1 |
+| NULL       |        1 |
+| 2018-12-06 |        1 |
+| 2019-01-01 |        1 |
+| 2012-10-23 |        2 |
++------------+----------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owned, count(*) from cars group by owned order by owned;
++------------+----------+
+| owned      | count(*) |
++------------+----------+
+| NULL       |        1 |
+| 2012-10-23 |        2 |
+| 2013-04-06 |        1 |
+| 2018-04-03 |        1 |
+| 2018-06-04 |        1 |
+| 2018-07-04 |        1 |
+| 2018-07-21 |        1 |
+| 2018-09-02 |        1 |
+| 2018-11-05 |        1 |
+| 2018-11-13 |        1 |
+| 2018-11-19 |        1 |
+| 2018-11-29 |        1 |
+| 2018-12-06 |        1 |
+| 2019-01-01 |        1 |
++------------+----------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owned, count(*) from cars group by owned order by owned desc;
++------------+----------+
+| owned      | count(*) |
++------------+----------+
+| 2019-01-01 |        1 |
+| 2018-12-06 |        1 |
+| 2018-11-29 |        1 |
+| 2018-11-19 |        1 |
+| 2018-11-13 |        1 |
+| 2018-11-05 |        1 |
+| 2018-09-02 |        1 |
+| 2018-07-21 |        1 |
+| 2018-07-04 |        1 |
+| 2018-06-04 |        1 |
+| 2018-04-03 |        1 |
+| 2013-04-06 |        1 |
+| 2012-10-23 |        2 |
+| NULL       |        1 |
++------------+----------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owned, count(*) as count from cars group by owned order by owned, count desc;
++------------+-------+
+| owned      | count |
++------------+-------+
+| NULL       |     1 |
+| 2012-10-23 |     2 |
+| 2013-04-06 |     1 |
+| 2018-04-03 |     1 |
+| 2018-06-04 |     1 |
+| 2018-07-04 |     1 |
+| 2018-07-21 |     1 |
+| 2018-09-02 |     1 |
+| 2018-11-05 |     1 |
+| 2018-11-13 |     1 |
+| 2018-11-19 |     1 |
+| 2018-11-29 |     1 |
+| 2018-12-06 |     1 |
+| 2019-01-01 |     1 |
++------------+-------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, count(*) from cars where name like "%er" group by name;
++--------------+----------+
+| name         | count(*) |
++--------------+----------+
+| Mini Cooper  |        1 |
+| Ranger rover |        2 |
++--------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, count(*) as count from cars where name like "%er" group by name order by count;
++--------------+-------+
+| name         | count |
++--------------+-------+
+| Mini Cooper  |     1 |
+| Ranger rover |     2 |
++--------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, count(*) as count from cars where name like "%er" group by name order by count desc;
++--------------+-------+
+| name         | count |
++--------------+-------+
+| Ranger rover |     2 |
+| Mini Cooper  |     1 |
++--------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, count(*) as count from cars where name like "%√er" group by name order by count desc;
+Empty set (0.00 sec)
+
+mysql> select *, count(*) from cars;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'cars.cars.name'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> select count(*) from cars;
++----------+
+| count(*) |
++----------+
+|       15 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select count(1) from cars;
++----------+
+| count(1) |
++----------+
+|       15 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select count(mfd) from cars;
++------------+
+| count(mfd) |
++------------+
+|         14 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select count(name) from cars;
++-------------+
+| count(name) |
++-------------+
+|          15 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select count(milage) from cars;
++---------------+
+| count(milage) |
++---------------+
+|            15 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select count(milage) as milage_count from cars;
++--------------+
+| milage_count |
++--------------+
+|           15 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, count(name) as count from cars where name like "%er" group by name order by count desc;
++--------------+-------+
+| name         | count |
++--------------+-------+
+| Ranger rover |     2 |
+| Mini Cooper  |     1 |
++--------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, count(*) as count from cars where name like "%er" group by name order by count desc;
++--------------+-------+
+| name         | count |
++--------------+-------+
+| Ranger rover |     2 |
+| Mini Cooper  |     1 |
++--------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, count(price) as count from cars where name like "%er" group by name order by count desc;
++--------------+-------+
+| name         | count |
++--------------+-------+
+| Ranger rover |     2 |
+| Mini Cooper  |     1 |
++--------------+-------+
+2 rows in set (0.00 sec)
