@@ -1,0 +1,792 @@
+mysql> use cars;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> 
+mysql> 
+mysql> 
+mysql> show tables;
++----------------+
+| Tables_in_cars |
++----------------+
+| cars           |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select *, count(*) from cars;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'cars.cars.name'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> 
+mysql> select version();
++-----------+
+| version() |
++-----------+
+| 8.0.13    |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, price, owner from cars order by name desc;
++--------------+----------+-----------+
+| name         | price    | owner     |
++--------------+----------+-----------+
+| Ranger rover |  4000000 | Ravi      |
+| Ranger rover |  4000000 | Ravi      |
+| Mini Cooper  |  3000000 | Ragini    |
+| Maruthi      |   800000 | Manoj     |
+| maruthi      |   400000 | Manoj     |
+| maruthi      |   300000 | NULL      |
+| Ferari       | 20000000 | Ravi      |
+| Ferari       |  8000000 | Suri Babu |
+| BMW          | 15000000 | Suri Babu |
+| BMW          |  6000000 | Sampath   |
+| BenZ         |  7000000 | Ajit      |
+| BenZ         |  9000000 | Sampath   |
+| Audi         |  8000000 | Prasanth  |
+| Audi         | 12000000 | Rambabu   |
+| Audi         |  8000000 | Ravi      |
++--------------+----------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, price, owner from cars order by name desc, price desc;
++--------------+----------+-----------+
+| name         | price    | owner     |
++--------------+----------+-----------+
+| Ranger rover |  4000000 | Ravi      |
+| Ranger rover |  4000000 | Ravi      |
+| Mini Cooper  |  3000000 | Ragini    |
+| Maruthi      |   800000 | Manoj     |
+| maruthi      |   400000 | Manoj     |
+| maruthi      |   300000 | NULL      |
+| Ferari       | 20000000 | Ravi      |
+| Ferari       |  8000000 | Suri Babu |
+| BMW          | 15000000 | Suri Babu |
+| BMW          |  6000000 | Sampath   |
+| BenZ         |  9000000 | Sampath   |
+| BenZ         |  7000000 | Ajit      |
+| Audi         | 12000000 | Rambabu   |
+| Audi         |  8000000 | Prasanth  |
+| Audi         |  8000000 | Ravi      |
++--------------+----------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, price, owner from cars order by name desc, price desc, owner;
++--------------+----------+-----------+
+| name         | price    | owner     |
++--------------+----------+-----------+
+| Ranger rover |  4000000 | Ravi      |
+| Ranger rover |  4000000 | Ravi      |
+| Mini Cooper  |  3000000 | Ragini    |
+| Maruthi      |   800000 | Manoj     |
+| maruthi      |   400000 | Manoj     |
+| maruthi      |   300000 | NULL      |
+| Ferari       | 20000000 | Ravi      |
+| Ferari       |  8000000 | Suri Babu |
+| BMW          | 15000000 | Suri Babu |
+| BMW          |  6000000 | Sampath   |
+| BenZ         |  9000000 | Sampath   |
+| BenZ         |  7000000 | Ajit      |
+| Audi         | 12000000 | Rambabu   |
+| Audi         |  8000000 | Prasanth  |
+| Audi         |  8000000 | Ravi      |
++--------------+----------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, price, owner from cars order by name desc, price desc, owner desc;
++--------------+----------+-----------+
+| name         | price    | owner     |
++--------------+----------+-----------+
+| Ranger rover |  4000000 | Ravi      |
+| Ranger rover |  4000000 | Ravi      |
+| Mini Cooper  |  3000000 | Ragini    |
+| Maruthi      |   800000 | Manoj     |
+| maruthi      |   400000 | Manoj     |
+| maruthi      |   300000 | NULL      |
+| Ferari       | 20000000 | Ravi      |
+| Ferari       |  8000000 | Suri Babu |
+| BMW          | 15000000 | Suri Babu |
+| BMW          |  6000000 | Sampath   |
+| BenZ         |  9000000 | Sampath   |
+| BenZ         |  7000000 | Ajit      |
+| Audi         | 12000000 | Rambabu   |
+| Audi         |  8000000 | Ravi      |
+| Audi         |  8000000 | Prasanth  |
++--------------+----------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, price, owner from cars order by name desc, price desc, owner desc;^C
+mysql> 
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
+| Ferari       | Red    | 2010 | GTX        |  8000000 | 2010-12-01 | 2012-10-23 | Suri Babu |  6000 |      8 |
+| Audi         | black  | 2010 | Q3         |  8000000 | 2010-12-01 | 2012-10-23 | Ravi      |  6000 |      8 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, color, owner from cars order by;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select name, color, owner from cars order by color;
++--------------+--------+-----------+
+| name         | color  | owner     |
++--------------+--------+-----------+
+| maruthi      | balck  | NULL      |
+| Maruthi      | black  | Manoj     |
+| Mini Cooper  | Black  | Ragini    |
+| Audi         | Black  | Prasanth  |
+| Ranger rover | black  | Ravi      |
+| Ranger rover | black  | Ravi      |
+| Audi         | black  | Ravi      |
+| BenZ         | Green  | Sampath   |
+| BMW          | Grey   | Suri Babu |
+| Ferari       | Red    | Ravi      |
+| BMW          | Red    | Sampath   |
+| maruthi      | red    | Manoj     |
+| Ferari       | Red    | Suri Babu |
+| Audi         | Silver | Rambabu   |
+| BenZ         | White  | Ajit      |
++--------------+--------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, color, owner from cars order by color, owner;
++--------------+--------+-----------+
+| name         | color  | owner     |
++--------------+--------+-----------+
+| maruthi      | balck  | NULL      |
+| Maruthi      | black  | Manoj     |
+| Audi         | Black  | Prasanth  |
+| Mini Cooper  | Black  | Ragini    |
+| Ranger rover | black  | Ravi      |
+| Ranger rover | black  | Ravi      |
+| Audi         | black  | Ravi      |
+| BenZ         | Green  | Sampath   |
+| BMW          | Grey   | Suri Babu |
+| maruthi      | red    | Manoj     |
+| Ferari       | Red    | Ravi      |
+| BMW          | Red    | Sampath   |
+| Ferari       | Red    | Suri Babu |
+| Audi         | Silver | Rambabu   |
+| BenZ         | White  | Ajit      |
++--------------+--------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, color, owner from cars order by color, owner desc;
++--------------+--------+-----------+
+| name         | color  | owner     |
++--------------+--------+-----------+
+| maruthi      | balck  | NULL      |
+| Ranger rover | black  | Ravi      |
+| Ranger rover | black  | Ravi      |
+| Audi         | black  | Ravi      |
+| Mini Cooper  | Black  | Ragini    |
+| Audi         | Black  | Prasanth  |
+| Maruthi      | black  | Manoj     |
+| BenZ         | Green  | Sampath   |
+| BMW          | Grey   | Suri Babu |
+| Ferari       | Red    | Suri Babu |
+| BMW          | Red    | Sampath   |
+| Ferari       | Red    | Ravi      |
+| maruthi      | red    | Manoj     |
+| Audi         | Silver | Rambabu   |
+| BenZ         | White  | Ajit      |
++--------------+--------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select min(price) from cars;
++------------+
+| min(price) |
++------------+
+|     300000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select min(price), name from cars;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'cars.cars.name'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, min(price) from cars;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'cars.cars.name'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select min(price) from cars;
++------------+
+| min(price) |
++------------+
+|     300000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select max(price) from cars;
++------------+
+| max(price) |
++------------+
+|   20000000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select avg(price) from cars;
++--------------+
+| avg(price)   |
++--------------+
+| 7033333.3333 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> select count(*) from cars;
++----------+
+| count(*) |
++----------+
+|       15 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select count(name) from cars;
++-------------+
+| count(name) |
++-------------+
+|          15 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(mfd) from cars;
++------------+
+| count(mfd) |
++------------+
+|         14 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
+| Ferari       | Red    | 2010 | GTX        |  8000000 | 2010-12-01 | 2012-10-23 | Suri Babu |  6000 |      8 |
+| Audi         | black  | 2010 | Q3         |  8000000 | 2010-12-01 | 2012-10-23 | Ravi      |  6000 |      8 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name from cars group by name;
++--------------+
+| name         |
++--------------+
+| Maruthi      |
+| Ferari       |
+| Mini Cooper  |
+| BenZ         |
+| Audi         |
+| BMW          |
+| Ranger rover |
++--------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select owner, max(price) as hightest_price from cars group by owner;
++-----------+----------------+
+| owner     | hightest_price |
++-----------+----------------+
+| Manoj     |         800000 |
+| Ravi      |       20000000 |
+| Ragini    |        3000000 |
+| Ajit      |        7000000 |
+| Prasanth  |        8000000 |
+| Suri Babu |       15000000 |
+| Sampath   |        9000000 |
+| Rambabu   |       12000000 |
+| NULL      |         300000 |
++-----------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, max(price) as hightest_price from cars group by owner order by hightest_price desc;
++-----------+----------------+
+| owner     | hightest_price |
++-----------+----------------+
+| Ravi      |       20000000 |
+| Suri Babu |       15000000 |
+| Rambabu   |       12000000 |
+| Sampath   |        9000000 |
+| Prasanth  |        8000000 |
+| Ajit      |        7000000 |
+| Ragini    |        3000000 |
+| Manoj     |         800000 |
+| NULL      |         300000 |
++-----------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, min(price) as lowest_price from cars group by owner order by lowest_price desc;
++-----------+--------------+
+| owner     | lowest_price |
++-----------+--------------+
+| Rambabu   |     12000000 |
+| Prasanth  |      8000000 |
+| Suri Babu |      8000000 |
+| Ajit      |      7000000 |
+| Sampath   |      6000000 |
+| Ravi      |      4000000 |
+| Ragini    |      3000000 |
+| Manoj     |       400000 |
+| NULL      |       300000 |
++-----------+--------------+
+9 rows in set (0.01 sec)
+
+mysql> 
+mysql> select owner, min(price) as lowest_price, count(*) as n from cars group by owner order by lowest_price desc;
++-----------+--------------+---+
+| owner     | lowest_price | n |
++-----------+--------------+---+
+| Rambabu   |     12000000 | 1 |
+| Prasanth  |      8000000 | 1 |
+| Suri Babu |      8000000 | 2 |
+| Ajit      |      7000000 | 1 |
+| Sampath   |      6000000 | 2 |
+| Ravi      |      4000000 | 4 |
+| Ragini    |      3000000 | 1 |
+| Manoj     |       400000 | 2 |
+| NULL      |       300000 | 1 |
++-----------+--------------+---+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, min(price) as lowest_price, count(*) as n from cars group by owner order by lowest_price desc;
++-----------+--------------+---+
+| owner     | lowest_price | n |
++-----------+--------------+---+
+| Rambabu   |     12000000 | 1 |
+| Prasanth  |      8000000 | 1 |
+| Suri Babu |      8000000 | 2 |
+| Ajit      |      7000000 | 1 |
+| Sampath   |      6000000 | 2 |
+| Ravi      |      4000000 | 4 |
+| Ragini    |      3000000 | 1 |
+| Manoj     |       400000 | 2 |
+| NULL      |       300000 | 1 |
++-----------+--------------+---+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, max(price) as hightest_price, count(*) as n from cars group by owner order by hightest_price desc;
++-----------+----------------+---+
+| owner     | hightest_price | n |
++-----------+----------------+---+
+| Ravi      |       20000000 | 4 |
+| Suri Babu |       15000000 | 2 |
+| Rambabu   |       12000000 | 1 |
+| Sampath   |        9000000 | 2 |
+| Prasanth  |        8000000 | 1 |
+| Ajit      |        7000000 | 1 |
+| Ragini    |        3000000 | 1 |
+| Manoj     |         800000 | 2 |
+| NULL      |         300000 | 1 |
++-----------+----------------+---+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select owner, max(price) as max, min(price) as min, count(*) as n from cars group by owner order by max desc;
++-----------+----------+----------+---+
+| owner     | max      | min      | n |
++-----------+----------+----------+---+
+| Ravi      | 20000000 |  4000000 | 4 |
+| Suri Babu | 15000000 |  8000000 | 2 |
+| Rambabu   | 12000000 | 12000000 | 1 |
+| Sampath   |  9000000 |  6000000 | 2 |
+| Prasanth  |  8000000 |  8000000 | 1 |
+| Ajit      |  7000000 |  7000000 | 1 |
+| Ragini    |  3000000 |  3000000 | 1 |
+| Manoj     |   800000 |   400000 | 2 |
+| NULL      |   300000 |   300000 | 1 |
++-----------+----------+----------+---+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select owner, count(*) as number from cars group by owner;
++-----------+--------+
+| owner     | number |
++-----------+--------+
+| Manoj     |      2 |
+| Ravi      |      4 |
+| Ragini    |      1 |
+| Ajit      |      1 |
+| Prasanth  |      1 |
+| Suri Babu |      2 |
+| Sampath   |      2 |
+| Rambabu   |      1 |
+| NULL      |      1 |
++-----------+--------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, count(*) as number from cars group by owner order by number desc;
++-----------+--------+
+| owner     | number |
++-----------+--------+
+| Ravi      |      4 |
+| Manoj     |      2 |
+| Suri Babu |      2 |
+| Sampath   |      2 |
+| NULL      |      1 |
+| Ragini    |      1 |
+| Ajit      |      1 |
+| Prasanth  |      1 |
+| Rambabu   |      1 |
++-----------+--------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, count(*) as number from cars group by owner order by number desc, owner desc;
++-----------+--------+
+| owner     | number |
++-----------+--------+
+| Ravi      |      4 |
+| Suri Babu |      2 |
+| Sampath   |      2 |
+| Manoj     |      2 |
+| Rambabu   |      1 |
+| Ragini    |      1 |
+| Prasanth  |      1 |
+| Ajit      |      1 |
+| NULL      |      1 |
++-----------+--------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, count(*) as number from cars group by owner order by count(*) desc, owner desc;
++-----------+--------+
+| owner     | number |
++-----------+--------+
+| Ravi      |      4 |
+| Suri Babu |      2 |
+| Sampath   |      2 |
+| Manoj     |      2 |
+| Rambabu   |      1 |
+| Ragini    |      1 |
+| Prasanth  |      1 |
+| Ajit      |      1 |
+| NULL      |      1 |
++-----------+--------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select sum(price) from cars;
++------------+
+| sum(price) |
++------------+
+|  105500000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select owner, sum(price) from cars group by owner;
++-----------+------------+
+| owner     | sum(price) |
++-----------+------------+
+| Manoj     |    1200000 |
+| Ravi      |   36000000 |
+| Ragini    |    3000000 |
+| Ajit      |    7000000 |
+| Prasanth  |    8000000 |
+| Suri Babu |   23000000 |
+| Sampath   |   15000000 |
+| Rambabu   |   12000000 |
+| NULL      |     300000 |
++-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select owner, sum(price) from cars group by owner order by sum(price) desc;
++-----------+------------+
+| owner     | sum(price) |
++-----------+------------+
+| Ravi      |   36000000 |
+| Suri Babu |   23000000 |
+| Sampath   |   15000000 |
+| Rambabu   |   12000000 |
+| Prasanth  |    8000000 |
+| Ajit      |    7000000 |
+| Ragini    |    3000000 |
+| Manoj     |    1200000 |
+| NULL      |     300000 |
++-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> 
+mysql> select owner, sum(price), count(*) as count from cars group by owner order by sum(price) desc;
++-----------+------------+-------+
+| owner     | sum(price) | count |
++-----------+------------+-------+
+| Ravi      |   36000000 |     4 |
+| Suri Babu |   23000000 |     2 |
+| Sampath   |   15000000 |     2 |
+| Rambabu   |   12000000 |     1 |
+| Prasanth  |    8000000 |     1 |
+| Ajit      |    7000000 |     1 |
+| Ragini    |    3000000 |     1 |
+| Manoj     |    1200000 |     2 |
+| NULL      |     300000 |     1 |
++-----------+------------+-------+
+9 rows in set (0.01 sec)
+
+mysql> 
+mysql> select sum(*) from cars;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from cars' at line 1
+mysql> 
+mysql> select count(*) from cars;
++----------+
+| count(*) |
++----------+
+|       15 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select sum(count(*)) from cars;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> 
+mysql> 
+mysql> 
+mysql> select distnict name from cars;
+ERROR 1054 (42S22): Unknown column 'distnict' in 'field list'
+mysql> 
+mysql> select name distinct from cars;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct from cars' at line 1
+mysql> select distinct name from cars;
++--------------+
+| name         |
++--------------+
+| Maruthi      |
+| Ferari       |
+| Mini Cooper  |
+| BenZ         |
+| Audi         |
+| BMW          |
+| Ranger rover |
++--------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select distinct price from cars;
++----------+
+| price    |
++----------+
+|   800000 |
+| 20000000 |
+|  3000000 |
+|  7000000 |
+|  8000000 |
+| 15000000 |
+|  6000000 |
+|  9000000 |
+| 12000000 |
+|   400000 |
+|   300000 |
+|  4000000 |
++----------+
+12 rows in set (0.00 sec)
+
+mysql> 
+mysql> select distinct milage from cars;
++--------+
+| milage |
++--------+
+|     15 |
+|      5 |
+|      0 |
+|      9 |
+|      6 |
+|      7 |
+|     12 |
+|     10 |
+|     22 |
+|     26 |
+|      8 |
++--------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select distnict name, price from cars;
+ERROR 1054 (42S22): Unknown column 'distnict' in 'field list'
+mysql> 
+mysql> select distinct name, price from cars;
++--------------+----------+
+| name         | price    |
++--------------+----------+
+| Maruthi      |   800000 |
+| Ferari       | 20000000 |
+| Mini Cooper  |  3000000 |
+| BenZ         |  7000000 |
+| Audi         |  8000000 |
+| BMW          | 15000000 |
+| BMW          |  6000000 |
+| BenZ         |  9000000 |
+| Audi         | 12000000 |
+| maruthi      |   400000 |
+| maruthi      |   300000 |
+| Ranger rover |  4000000 |
+| Ferari       |  8000000 |
++--------------+----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name from cars group by name;
++--------------+
+| name         |
++--------------+
+| Maruthi      |
+| Ferari       |
+| Mini Cooper  |
+| BenZ         |
+| Audi         |
+| BMW          |
+| Ranger rover |
++--------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> select name, price from cars group by name;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'cars.cars.price' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, price from cars group by name, price;
++--------------+----------+
+| name         | price    |
++--------------+----------+
+| Maruthi      |   800000 |
+| Ferari       | 20000000 |
+| Mini Cooper  |  3000000 |
+| BenZ         |  7000000 |
+| Audi         |  8000000 |
+| BMW          | 15000000 |
+| BMW          |  6000000 |
+| BenZ         |  9000000 |
+| Audi         | 12000000 |
+| maruthi      |   400000 |
+| maruthi      |   300000 |
+| Ranger rover |  4000000 |
+| Ferari       |  8000000 |
++--------------+----------+
+13 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select name, price from cars group by name, price, owner;
++--------------+----------+
+| name         | price    |
++--------------+----------+
+| Maruthi      |   800000 |
+| Ferari       | 20000000 |
+| Mini Cooper  |  3000000 |
+| BenZ         |  7000000 |
+| Audi         |  8000000 |
+| BMW          | 15000000 |
+| BMW          |  6000000 |
+| BenZ         |  9000000 |
+| Audi         | 12000000 |
+| maruthi      |   400000 |
+| maruthi      |   300000 |
+| Ranger rover |  4000000 |
+| Ferari       |  8000000 |
+| Audi         |  8000000 |
++--------------+----------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 

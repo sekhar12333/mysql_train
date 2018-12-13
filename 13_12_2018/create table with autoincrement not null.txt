@@ -1,0 +1,595 @@
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use cars;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> 
+mysql> 
+mysql> 
+mysql> create table emps(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25), age int(3), gender varchar(6), designation varchar(25), platform varchar(15), salary double(15), city varchar(45), state varchar(34), zipcode varchar(10) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '), city varchar(45), state varchar(34), zipcode varchar(10) )' at line 1
+mysql> 
+mysql> 
+mysql> create table emps(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25), age int(3), gender varchar(6), designation varchar(25), platform varchar(15), salary double(15), city varchar(45), state varchar(34), zipcode varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '), city varchar(45), state varchar(34), zipcode varchar(10))' at line 1
+mysql> 
+mysql> 
+mysql> create table emps(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25), age int(3), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15), city varchar(45), state varchar(34), zipcode varchar(10));
+ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+mysql> 
+mysql> 
+mysql> 
+mysql>                                                                                                                                 mysql> create table emps(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25), age int(3), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15), city varchar(45), state varchar(34), zipcode varchar(10), PRIMARY KEY(ID));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> DESCRIBE emps;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int(3)      | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(25) | YES  |     | NULL    |                |
+| age         | int(3)      | YES  |     | NULL    |                |
+| gender      | varchar(6)  | YES  |     | NULL    |                |
+| designation | varchar(25) | YES  |     | NULL    |                |
+| platform    | varchar(15) | YES  |     | NULL    |                |
+| salary      | int(15)     | YES  |     | NULL    |                |
+| city        | varchar(45) | YES  |     | NULL    |                |
+| state       | varchar(34) | YES  |     | NULL    |                |
+| zipcode     | varchar(10) | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+10 rows in set (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> create table emps_test(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25) NOT NULL, age int(3) DEFAULT(0), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15) DEFAULT(0), city varchar(45), state varchar(34), zipcode varchar(10), PRIMARY KEY(ID));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> 
+mysql> 
+mysql> describe emp_test;
+ERROR 1146 (42S02): Table 'cars.emp_test' doesn't exist
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> describe emps_test;
++-------------+-------------+------+-----+---------+-------------------+
+| Field       | Type        | Null | Key | Default | Extra             |
++-------------+-------------+------+-----+---------+-------------------+
+| id          | int(3)      | NO   | PRI | NULL    | auto_increment    |
+| name        | varchar(25) | NO   |     | NULL    |                   |
+| age         | int(3)      | YES  |     | 0       | DEFAULT_GENERATED |
+| gender      | varchar(6)  | YES  |     | NULL    |                   |
+| designation | varchar(25) | YES  |     | NULL    |                   |
+| platform    | varchar(15) | YES  |     | NULL    |                   |
+| salary      | int(15)     | YES  |     | 0       | DEFAULT_GENERATED |
+| city        | varchar(45) | YES  |     | NULL    |                   |
+| state       | varchar(34) | YES  |     | NULL    |                   |
+| zipcode     | varchar(10) | YES  |     | NULL    |                   |
++-------------+-------------+------+-----+---------+-------------------+
+10 rows in set (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> create table emps_test1(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25) NOT NULL, age int(3) DEFAULT(0), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15) DEFAULT(0), city varchar(45), state varchar(34), zipcode varchar(10),emp_id int auto_increment, PRIMARY KEY(ID));
+ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+mysql> 
+mysql> 
+mysql> create table emps_test1(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25) NOT NULL, age int(3) DEFAULT(0), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15) DEFAULT(0), city varchar(45), state varchar(34), zipcode varchar(10),emp_id int auto_increment UNIQUE, PRIMARY KEY(ID));
+ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+mysql> 
+mysql> 
+mysql> 
+mysql> create table emps_test1(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25) NOT NULL, age int(3) DEFAULT(0), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15) DEFAULT(0), city varchar(45), state varchar(34), zipcode varchar(10),emp_id int auto_increment,UNIQUE(emp_id), PRIMARY KEY(ID));
+ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+mysql> 
+mysql> 
+mysql> 
+mysql> create table emps_test1(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25) NOT NULL, age int(3) DEFAULT(0), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15) DEFAULT(0), city varchar(45), state varchar(34), zipcode varchar(10),emp_id int auto_increment, PRIMARY KEY(emp_id), PRIMARY KEY(ID));
+ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+mysql> 
+mysql> 
+mysql> 
+mysql> create table emps_test1(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25) NOT NULL, age int(3) DEFAULT(0), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15) DEFAULT(0), city varchar(45), state varchar(34), zipcode varchar(10),emp_id int, UNIQUE(emp_id), PRIMARY KEY(ID)); 
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> describe emps_test1;
++-------------+-------------+------+-----+---------+-------------------+
+| Field       | Type        | Null | Key | Default | Extra             |
++-------------+-------------+------+-----+---------+-------------------+
+| id          | int(3)      | NO   | PRI | NULL    | auto_increment    |
+| name        | varchar(25) | NO   |     | NULL    |                   |
+| age         | int(3)      | YES  |     | 0       | DEFAULT_GENERATED |
+| gender      | varchar(6)  | YES  |     | NULL    |                   |
+| designation | varchar(25) | YES  |     | NULL    |                   |
+| platform    | varchar(15) | YES  |     | NULL    |                   |
+| salary      | int(15)     | YES  |     | 0       | DEFAULT_GENERATED |
+| city        | varchar(45) | YES  |     | NULL    |                   |
+| state       | varchar(34) | YES  |     | NULL    |                   |
+| zipcode     | varchar(10) | YES  |     | NULL    |                   |
+| emp_id      | int(11)     | YES  | UNI | NULL    |                   |
++-------------+-------------+------+-----+---------+-------------------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> insert into emps_test1 values("Suri", 25, "MALE", "Android Team Lead", "Android", 2400000, "HYD", "TS", "500081", 01);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> 
+mysql> 
+mysql> 
+mysql> insert into emps_test1 values(1,"Suri", 25, "MALE", "Android Team Lead", "Android", 2400000, "HYD", "TS", "500081", 01);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Suri", 25, "MALE", "Android Team Lead", "Android", 2400000,
+ERROR 1062 (23000): Duplicate entry '1' for key 'emp_id'
+mysql> 
+mysql> 
+mysql> select last_insert_id;
+ERROR 1054 (42S22): Unknown column 'last_insert_id' in 'field list'
+mysql> select last_insert_id();
++------------------+
+| last_insert_id() |
++------------------+
+|                0 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> delete emps_test1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> delete table emps_test1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table emps_test1' at line 1
+mysql> 
+mysql> 
+mysql> drop emp_test1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp_test1' at line 1
+mysql> drop emps_test1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emps_test1' at line 1
+mysql> 
+mysql> drop table emps_test1;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> create table emps_test1(id int(3) AUTO_INCREMENT NOT NULL, name varchar(25) NOT NULL, age int(3) DEFAULT(0), gender varchar(6), designation varchar(25), platform varchar(15), salary INT(15) DEFAULT(0), city varchar(45), state varchar(34), zipcode varchar(10),emp_id int, UNIQUE(emp_id), PRIMARY KEY(ID));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> describe emps_test1;
++-------------+-------------+------+-----+---------+-------------------+
+| Field       | Type        | Null | Key | Default | Extra             |
++-------------+-------------+------+-----+---------+-------------------+
+| id          | int(3)      | NO   | PRI | NULL    | auto_increment    |
+| name        | varchar(25) | NO   |     | NULL    |                   |
+| age         | int(3)      | YES  |     | 0       | DEFAULT_GENERATED |
+| gender      | varchar(6)  | YES  |     | NULL    |                   |
+| designation | varchar(25) | YES  |     | NULL    |                   |
+| platform    | varchar(15) | YES  |     | NULL    |                   |
+| salary      | int(15)     | YES  |     | 0       | DEFAULT_GENERATED |
+| city        | varchar(45) | YES  |     | NULL    |                   |
+| state       | varchar(34) | YES  |     | NULL    |                   |
+| zipcode     | varchar(10) | YES  |     | NULL    |                   |
+| emp_id      | int(11)     | YES  | UNI | NULL    |                   |
++-------------+-------------+------+-----+---------+-------------------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Suri", 25, "MALE", "Android Team Lead", "Android", 2400000, "HYD", "TS", "500081", 01);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Suri", 25, "MALE", "Android Team Lead", "Android", 2400000, "HYD", "TS", "500081", 01);
+ERROR 1062 (23000): Duplicate entry '1' for key 'emp_id'
+mysql> 
+mysql> 
+mysql> select * from emps_test1;
++----+------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+| id | name | age  | gender | designation       | platform | salary  | city | state | zipcode | emp_id |
++----+------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri |   25 | MALE   | Android Team Lead | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
++----+------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Sathish", 25, "MALE", "Java Team Lead", "Java", 3400000, "HYD", "TS", "500081", 2);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> 
+mysql> 
+mysql> select * from emps_test1;                                                                                                           +----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+| id | name    | age  | gender | designation       | platform | salary  | city | state | zipcode | emp_id |
++----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri    |   25 | MALE   | Android Team Lead | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
+|  3 | Sathish |   25 | MALE   | Java Team Lead    | Java     | 3400000 | HYD  | TS    | 500081  |      2 |
++----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Ajit", 25, "MALE", "Java Team Lead", "Java", 3400000, "HYD", "TS", "500081", 3);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> 
+mysql> select * from emps_test1;                                                                                                           +----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+| id | name    | age  | gender | designation       | platform | salary  | city | state | zipcode | emp_id |
++----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri    |   25 | MALE   | Android Team Lead | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
+|  3 | Sathish |   25 | MALE   | Java Team Lead    | Java     | 3400000 | HYD  | TS    | 500081  |      2 |
+|  4 | Ajit    |   25 | MALE   | Java Team Lead    | Java     | 3400000 | HYD  | TS    | 500081  |      3 |
++----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> select last_insert_id();
++------------------+
+| last_insert_id() |
++------------------+
+|                4 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> describe emps_test1;
++-------------+-------------+------+-----+---------+-------------------+
+| Field       | Type        | Null | Key | Default | Extra             |
++-------------+-------------+------+-----+---------+-------------------+
+| id          | int(3)      | NO   | PRI | NULL    | auto_increment    |
+| name        | varchar(25) | NO   |     | NULL    |                   |
+| age         | int(3)      | YES  |     | 0       | DEFAULT_GENERATED |
+| gender      | varchar(6)  | YES  |     | NULL    |                   |
+| designation | varchar(25) | YES  |     | NULL    |                   |
+| platform    | varchar(15) | YES  |     | NULL    |                   |
+| salary      | int(15)     | YES  |     | 0       | DEFAULT_GENERATED |
+| city        | varchar(45) | YES  |     | NULL    |                   |
+| state       | varchar(34) | YES  |     | NULL    |                   |
+| zipcode     | varchar(10) | YES  |     | NULL    |                   |
+| emp_id      | int(11)     | YES  | UNI | NULL    |                   |
++-------------+-------------+------+-----+---------+-------------------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Rambabu", 26, "MALE", "Testing Team Lead", "Testing", 2500000, "KMM", "TS", "500381", 4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> select * from emps_test1;                                                                                                           +----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+| id | name    | age  | gender | designation       | platform | salary  | city | state | zipcode | emp_id |
++----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri    |   25 | MALE   | Android Team Lead | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
+|  3 | Sathish |   25 | MALE   | Java Team Lead    | Java     | 3400000 | HYD  | TS    | 500081  |      2 |
+|  4 | Ajit    |   25 | MALE   | Java Team Lead    | Java     | 3400000 | HYD  | TS    | 500081  |      3 |
+|  5 | Rambabu |   26 | MALE   | Testing Team Lead | Testing  | 2500000 | KMM  | TS    | 500381  |      4 |
++----+---------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Prasanth", 25, "MALE", "Java Developer", "Java", 3450000, "BZA", "AP", "521228", 5);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Uday",24, "MALE", "Test Engineer", "Testing", 5600000, "KDP", "AP", "510002", 6);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from emps_test1;
++----+----------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+| id | name     | age  | gender | designation       | platform | salary  | city | state | zipcode | emp_id |
++----+----------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri     |   25 | MALE   | Android Team Lead | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
+|  3 | Sathish  |   25 | MALE   | Java Team Lead    | Java     | 3400000 | HYD  | TS    | 500081  |      2 |
+|  4 | Ajit     |   25 | MALE   | Java Team Lead    | Java     | 3400000 | HYD  | TS    | 500081  |      3 |
+|  5 | Rambabu  |   26 | MALE   | Testing Team Lead | Testing  | 2500000 | KMM  | TS    | 500381  |      4 |
+|  6 | Prasanth |   25 | MALE   | Java Developer    | Java     | 3450000 | BZA  | AP    | 521228  |      5 |
+|  7 | Uday     |   24 | MALE   | Test Engineer     | Testing  | 5600000 | KDP  | AP    | 510002  |      6 |
++----+----------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> insert into emps_test1(id, name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values(2, "Rahul",25, "MALE", "Sr.Andorid Develoepr", "Andorid", 5600000, "KNR", "TS", "500517", 7);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> 
+mysql> 
+mysql> select * from emps_test1;                                                                                                           +----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+| id | name     | age  | gender | designation          | platform | salary  | city | state | zipcode | emp_id |
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri     |   25 | MALE   | Android Team Lead    | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
+|  2 | Rahul    |   25 | MALE   | Sr.Andorid Develoepr | Andorid  | 5600000 | KNR  | TS    | 500517  |      7 |
+|  3 | Sathish  |   25 | MALE   | Java Team Lead       | Java     | 3400000 | HYD  | TS    | 500081  |      2 |
+|  4 | Ajit     |   25 | MALE   | Java Team Lead       | Java     | 3400000 | HYD  | TS    | 500081  |      3 |
+|  5 | Rambabu  |   26 | MALE   | Testing Team Lead    | Testing  | 2500000 | KMM  | TS    | 500381  |      4 |
+|  6 | Prasanth |   25 | MALE   | Java Developer       | Java     | 3450000 | BZA  | AP    | 521228  |      5 |
+|  7 | Uday     |   24 | MALE   | Test Engineer        | Testing  | 5600000 | KDP  | AP    | 510002  |      6 |
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> select * from emps_test1 where id = 1;
++----+------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+| id | name | age  | gender | designation       | platform | salary  | city | state | zipcode | emp_id |
++----+------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri |   25 | MALE   | Android Team Lead | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
++----+------+------+--------+-------------------+----------+---------+------+-------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values( "Preetham",25, "MALE", "Sr.Java Develoepr", "Java", 5600000, "KNR", "TS", "500517", NULL);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values( "Sampath",21, "MALE", "ANdorid Develoepr", "Android", 5470000, "HYD", "TS", "500056", NULL);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> 
+mysql> 
+mysql> describe emps_test1;
++-------------+-------------+------+-----+---------+-------------------+
+| Field       | Type        | Null | Key | Default | Extra             |
++-------------+-------------+------+-----+---------+-------------------+
+| id          | int(3)      | NO   | PRI | NULL    | auto_increment    |
+| name        | varchar(25) | NO   |     | NULL    |                   |
+| age         | int(3)      | YES  |     | 0       | DEFAULT_GENERATED |
+| gender      | varchar(6)  | YES  |     | NULL    |                   |
+| designation | varchar(25) | YES  |     | NULL    |                   |
+| platform    | varchar(15) | YES  |     | NULL    |                   |
+| salary      | int(15)     | YES  |     | 0       | DEFAULT_GENERATED |
+| city        | varchar(45) | YES  |     | NULL    |                   |
+| state       | varchar(34) | YES  |     | NULL    |                   |
+| zipcode     | varchar(10) | YES  |     | NULL    |                   |
+| emp_id      | int(11)     | YES  | UNI | NULL    |                   |
++-------------+-------------+------+-----+---------+-------------------+
+11 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values( "Sampath",21, "MALE", "ANdorid Develoepr", "Android", 5470000, "HYD", "TS", "500056", 3);
+ERROR 1062 (23000): Duplicate entry '3' for key 'emp_id'
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values( "Sampath^C21, "MALE", "ANdomysql> eloepr", "Android", 5470000, "HYD", "TS", "500056", 8);
+mysql> 
+mysql> 
+mysql> ininsert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values(^C
+mysql> insert into emps_test1(name,age,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Ragini", "FEMALE", "ANDROID Developer", "Andorid", 4950000, "HYD", "TS", "500056", 8);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> 
+mysql> 
+mysql> 
+mysql> insert into emps_test1(name,gender,designation,platform,salary, city,state, zipcode, emp_id) values("Ragini", "FEMALE", "ANDROID Developer", "Andorid", 4950000, "HYD", "TS", "500056", 8);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from emps_test1;
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+| id | name     | age  | gender | designation          | platform | salary  | city | state | zipcode | emp_id |
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri     |   25 | MALE   | Android Team Lead    | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
+|  2 | Rahul    |   25 | MALE   | Sr.Andorid Develoepr | Andorid  | 5600000 | KNR  | TS    | 500517  |      7 |
+|  3 | Sathish  |   25 | MALE   | Java Team Lead       | Java     | 3400000 | HYD  | TS    | 500081  |      2 |
+|  4 | Ajit     |   25 | MALE   | Java Team Lead       | Java     | 3400000 | HYD  | TS    | 500081  |      3 |
+|  5 | Rambabu  |   26 | MALE   | Testing Team Lead    | Testing  | 2500000 | KMM  | TS    | 500381  |      4 |
+|  6 | Prasanth |   25 | MALE   | Java Developer       | Java     | 3450000 | BZA  | AP    | 521228  |      5 |
+|  7 | Uday     |   24 | MALE   | Test Engineer        | Testing  | 5600000 | KDP  | AP    | 510002  |      6 |
+|  8 | Preetham |   25 | MALE   | Sr.Java Develoepr    | Java     | 5600000 | KNR  | TS    | 500517  |   NULL |
+|  9 | Sampath  |   21 | MALE   | ANdorid Develoepr    | Android  | 5470000 | HYD  | TS    | 500056  |   NULL |
+| 11 | Ragini   |    0 | FEMALE | ANDROID Developer    | Andorid  | 4950000 | HYD  | TS    | 500056  |      8 |
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> exit
+Bye
+CSI-0037:bin spasem$ 
+CSI-0037:bin spasem$ 
+CSI-0037:bin spasem$ ./mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+CSI-0037:bin spasem$ 
+CSI-0037:bin spasem$ 
+CSI-0037:bin spasem$ ./mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.13 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> 
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cars               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pets               |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars.cars;
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| name         | color  | make | model      | price    | mfd        | owned      | owner     | hp    | milage |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+| Maruthi      | black  | 2018 | desire vdi |   800000 | 2018-07-21 | 2018-07-21 | Manoj     | 22000 |     15 |
+| Ferari       | Red    | 2018 | LMT        | 20000000 | 2018-05-01 | 2018-06-04 | Ravi      |  5000 |      5 |
+| Mini Cooper  | Black  | 2018 | V1         |  3000000 | 2017-04-01 | 2018-07-04 | Ragini    |  3000 |      0 |
+| BenZ         | White  | 2018 | C class    |  7000000 | 2016-05-04 | 2018-04-03 | Ajit      |  4000 |      9 |
+| Audi         | Black  | 2017 | A7         |  8000000 | 2017-03-06 | 2018-09-02 | Prasanth  |  4500 |      6 |
+| BMW          | Grey   | 2018 | 7 Series   | 15000000 | 2018-11-01 | 2018-11-29 | Suri Babu |  4800 |      7 |
+| BMW          | Red    | 2015 | 5 Series   |  6000000 | 2018-06-01 | 2018-11-05 | Sampath   |  4500 |     12 |
+| BenZ         | Green  | 2014 | GLA        |  9000000 | 2018-10-14 | 2018-11-13 | Sampath   |  4500 |     10 |
+| Audi         | Silver | 2016 | R8         | 12000000 | 2018-02-28 | 2018-11-19 | Rambabu   |  4500 |     12 |
+| maruthi      | red    | 2004 | 800        |   400000 | 2012-03-28 | 2013-04-06 | Manoj     |   800 |     22 |
+| maruthi      | balck  | 2016 | k10        |   300000 | NULL       | NULL       | NULL      |   600 |     26 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2018-12-06 | Ravi      |  4000 |     12 |
+| Ranger rover | black  | 2018 | Discover   |  4000000 | 2018-12-06 | 2019-01-01 | Ravi      |  4000 |     12 |
+| Ferari       | Red    | 2010 | GTX        |  8000000 | 2010-12-01 | 2012-10-23 | Suri Babu |  6000 |      8 |
+| Audi         | black  | 2010 | Q3         |  8000000 | 2010-12-01 | 2012-10-23 | Ravi      |  6000 |      8 |
++--------------+--------+------+------------+----------+------------+------------+-----------+-------+--------+
+15 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from cars.emps_test1;
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+| id | name     | age  | gender | designation          | platform | salary  | city | state | zipcode | emp_id |
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+|  1 | Suri     |   25 | MALE   | Android Team Lead    | Android  | 2400000 | HYD  | TS    | 500081  |      1 |
+|  2 | Rahul    |   25 | MALE   | Sr.Andorid Develoepr | Andorid  | 5600000 | KNR  | TS    | 500517  |      7 |
+|  3 | Sathish  |   25 | MALE   | Java Team Lead       | Java     | 3400000 | HYD  | TS    | 500081  |      2 |
+|  4 | Ajit     |   25 | MALE   | Java Team Lead       | Java     | 3400000 | HYD  | TS    | 500081  |      3 |
+|  5 | Rambabu  |   26 | MALE   | Testing Team Lead    | Testing  | 2500000 | KMM  | TS    | 500381  |      4 |
+|  6 | Prasanth |   25 | MALE   | Java Developer       | Java     | 3450000 | BZA  | AP    | 521228  |      5 |
+|  7 | Uday     |   24 | MALE   | Test Engineer        | Testing  | 5600000 | KDP  | AP    | 510002  |      6 |
+|  8 | Preetham |   25 | MALE   | Sr.Java Develoepr    | Java     | 5600000 | KNR  | TS    | 500517  |   NULL |
+|  9 | Sampath  |   21 | MALE   | ANdorid Develoepr    | Android  | 5470000 | HYD  | TS    | 500056  |   NULL |
+| 11 | Ragini   |    0 | FEMALE | ANDROID Developer    | Andorid  | 4950000 | HYD  | TS    | 500056  |      8 |
++----+----------+------+--------+----------------------+----------+---------+------+-------+---------+--------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> describe cars.cars;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(40) | YES  |     | NULL    |       |
+| color  | varchar(15) | YES  |     | NULL    |       |
+| make   | varchar(30) | YES  |     | NULL    |       |
+| model  | varchar(30) | YES  |     | NULL    |       |
+| price  | int(10)     | YES  |     | NULL    |       |
+| mfd    | date        | YES  |     | NULL    |       |
+| owned  | date        | YES  |     | NULL    |       |
+| owner  | varchar(30) | YES  |     | NULL    |       |
+| hp     | int(4)      | YES  |     | NULL    |       |
+| milage | int(3)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, owner, price from cars.cars;
++--------------+-----------+----------+
+| name         | owner     | price    |
++--------------+-----------+----------+
+| Maruthi      | Manoj     |   800000 |
+| Ferari       | Ravi      | 20000000 |
+| Mini Cooper  | Ragini    |  3000000 |
+| BenZ         | Ajit      |  7000000 |
+| Audi         | Prasanth  |  8000000 |
+| BMW          | Suri Babu | 15000000 |
+| BMW          | Sampath   |  6000000 |
+| BenZ         | Sampath   |  9000000 |
+| Audi         | Rambabu   | 12000000 |
+| maruthi      | Manoj     |   400000 |
+| maruthi      | NULL      |   300000 |
+| Ranger rover | Ravi      |  4000000 |
+| Ranger rover | Ravi      |  4000000 |
+| Ferari       | Suri Babu |  8000000 |
+| Audi         | Ravi      |  8000000 |
++--------------+-----------+----------+
+15 rows in set (0.00 sec)
+
+mysql> select max(price) from cars.cars;
++------------+
+| max(price) |
++------------+
+|   20000000 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> select name, max(price) from cars.cars;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'cars.cars.name'; this is incompatible with sql_mode=only_full_group_by
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select name, max(price) from cars.cars group by name;
++--------------+------------+
+| name         | max(price) |
++--------------+------------+
+| Maruthi      |     800000 |
+| Ferari       |   20000000 |
+| Mini Cooper  |    3000000 |
+| BenZ         |    9000000 |
+| Audi         |   12000000 |
+| BMW          |   15000000 |
+| Ranger rover |    4000000 |
++--------------+------------+
+7 rows in set (0.01 sec)
+
+mysql> 
+mysql> select name, max(price) from cars.cars group by name, price;
